@@ -63,7 +63,7 @@ const ResponsiveAppBar = () => {
             alt="Renu Logo."
             src={Renu}
         />
-        <Link to="/">Home</Link>
+        <Link to="/"></Link>
           </IconButton>
           <Typography
             variant="h6"
@@ -80,7 +80,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            Renu
+           <Link to="/">Renu</Link> 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
