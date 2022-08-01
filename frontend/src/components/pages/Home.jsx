@@ -1,50 +1,32 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
+import Box from '@mui/system/Box';
+import Grid from '@mui/system/Unstable_Grid';
+import styled from '@mui/system/styled';
 
-function Item(props) {
-    const { sx, ...other } = props;
-    return (
-      <Box
-        sx={{
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-          color: (theme) => (theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800'),
-          border: '1px solid',
-          borderColor: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
-          p: 1,
-          m: 1,
-          borderRadius: 2,
-          fontSize: '0.875rem',
-          fontWeight: '700',
-          ...sx,
-        }}
-        {...other}
-      />
-    );
-  }
-  
-  Item.propTypes = {
-    /**
-     * The system prop that allows defining system overrides as well as additional CSS styles.
-     */
-    sx: PropTypes.oneOfType([
-      PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool]),
-      ),
-      PropTypes.func,
-      PropTypes.object,
-    ]),
-  };
-  
+const Item = styled('div')(({ theme }) => ({
+    
+    height: "160px",
+    textAlign: 'center',
+    margin: "auto",
+  }));
+
 function Home() {
     return (
-        <div style={{ width: '100%' }}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
-        <Item>1</Item>
-        <Item>2</Item>
-      </Box>
+        <div>
+        <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={0} 
+  alignItems="center"
+  justifyContent="center" columns={16}>
+        <Grid xs={8}>
+          <Item><iframe src="https://embed.lottiefiles.com/animation/84755" width={800} height={400}></iframe></Item>
+        </Grid>
+        <Grid xs={8}>
+          <Item>xs=8</Item>
+        </Grid>
+      </Grid>
+    </Box>
     </div>
+
     );
 };
 
