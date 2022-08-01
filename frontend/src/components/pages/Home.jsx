@@ -39,7 +39,7 @@ function Item(props) {
   
 function Home() {
     return (
-        <div style={{ width: '40%' }}>
+        <div style={{ width: '100%' }}>
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
         <Item>1</Item>
         <Item>2</Item>

@@ -1,2 +1,0 @@
-Django==3.8.12
-Pyrebase4
