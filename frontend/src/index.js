@@ -10,6 +10,9 @@ import Home from './components/pages/Home';
 import Events from './components/pages/Events';
 import Education from './components/pages/Education';
 import Community from './components/pages/Community';
+import Blog from './components/pages/Blog';
+import BlogDetail from './components/BlogDetail';
+import Category from './components/Category';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +22,9 @@ root.render(
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="education" element={<Education />} />
+      <Route path="blog" element={<Blog />} />
+      <Route path="category/:id" component={<Category/>}/>
+      <Route path="blog/:id" component={<BlogDetail/>}/>
       <Route path="events" element={<Events />} />
       <Route path="community" element={<Community />} />
     </Route>

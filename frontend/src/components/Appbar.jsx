@@ -21,7 +21,7 @@ import Community from './pages/Community';
 
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-const pages = ['Education', 'Community', 'Events'];
+const pages = ['Blog', 'Community', 'Events'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
