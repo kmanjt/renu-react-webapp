@@ -23,8 +23,8 @@ root.render(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="blog" element={<Blog />} />
-      <Route path="category/:id" component={<Category/>}/>
-      <Route path="blog/:id" component={<BlogDetail/>}/>
+      <Route path="category/:id" element={<Category/>}/>
+      <Route path="blog/:id" element={<BlogDetail/>}/>
       <Route path="events" element={<Events />} />
       <Route path="community" element={<Community />} />
     </Route>
