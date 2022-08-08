@@ -2,35 +2,25 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Blog() {
-    const [blogs, setBlogs]=([]);
-    const [featuredBlog, setFeaturedBlog]=([]);
+export default function Blog() {
+    const [blogs, setBlogs]=useState([]);
+    const [featuredBlog, setFeaturedBlog]=useState([]);
 
+    function fetchData() {
+        axios
+        .get("/api/blog/featured")
+        .then(res => {
+            setFeaturedBlog(res.data[0]);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }    
+            
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await axios.get("/api/blog/featured");
-                setFeaturedBlog(res.data[0]);
-            } catch (error) {
-                
-            }
-
-        }
         fetchData();
-    }, []);
-
-    useEffect(() => {
-        const fetchBlogs = async () => {
-            try {
-                const res = await axios.get("/api/blog/");
-                setBlogs(res.data);
-            } catch (error) {
-                
-            }
-
         }
-        fetchBlogs();
-    }, []);
+    , []);
 
     const capitalizeFirstLetter = (word) => {
         if (word) {
@@ -39,10 +29,9 @@ function Blog() {
     };
 
     const getBlogs = () => {
-
     };
 
-    return (
+return (
     <div className='container'>
         <div className="nav-scroller py-1 mb-2">
         <nav className="nav d-flex justify-content-between">
@@ -55,14 +44,14 @@ function Blog() {
 
     <div className="p-4 p-md-5 mb-4 rounded text-bg-dark mt-5">
     <div className="col-md-6 px-0">
-      <h1 className="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p className="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p className="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+      <h1 className="display-4 fst-italic">{featuredBlog.title}</h1>
+        <p className="lead my-3">{featuredBlog.excerpt}</p>
+        <p className="lead mb-0">
+            <Link to={`/blog/${featuredBlog.slug}`} className="text-white fw-bold">
+                Continue reading...</Link></p>
     </div>
   </div>
 
     </div>
-    )
-};
-
-export default Blog;
+    );
+}

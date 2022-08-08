@@ -25,14 +25,14 @@ class BlogPost(models.Model):
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)
-        queryset = BlogPost.objects.all().filter(slug_iexact=original_slug).count()
+        queryset = BlogPost.objects.all().filter(slug__iexact=original_slug).count()
 
         count = 1
         slug = original_slug
         while(queryset):
             slug = original_slug + '-' + str(count)
             count += 1
-            queryset = BlogPost.objects.all().filter(slug_iexact=original_slug).count()
+            queryset = BlogPost.objects.all().filter(slug__iexact=slug).count()
 
         self.slug = slug
 
