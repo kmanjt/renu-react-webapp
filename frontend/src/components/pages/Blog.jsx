@@ -48,7 +48,7 @@ export default function Blog() {
             return list.push(
     <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div className="col p-4 d-flex flex-column position-static">
-          <strong className="d-inline-block mb-2 text-primary">{blogPost.category}</strong>
+          <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.category)}</strong>
           <h3 className="mb-0">{blogPost.title}</h3>
           <div className="mb-1 text-muted">{blogPost.month}</div>
           <p className="card-text mb-auto">{blogPost.excerpt}</p>
