@@ -13,7 +13,7 @@ function App() {
     <React.Fragment>
       <main>
         <Appbar />
-        <p> Hello World </p>
+        
       </main>
     </React.Fragment>
   );

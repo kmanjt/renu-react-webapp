@@ -1,8 +1,11 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/system/Box';
 import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase-config';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Item = styled('div')(({ theme }) => ({
     
@@ -12,6 +15,27 @@ const Item = styled('div')(({ theme }) => ({
   }));
 
 function Home() {
+  const [signedIn, setSignedIn] = useState(false);
+
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  };
+  auth.onAuthStateChanged((user) => {
+    if (user) { 
+      setSignedIn(true);
+    }
+    else {
+      setSignedIn(false);
+    }
+  })
+
     return (
   <div className="container py-4">
     <header className="pb-3 mb-4 border-bottom">
@@ -25,7 +49,14 @@ function Home() {
       <div className="container-fluid py-5">
         <h1 className="display-5 fw-bold">Renu Ireland</h1>
         <p className="col-md-8 fs-4">The smart way to compost.<br/>Welcome to Renu Ireland! Check out our blogs below.</p>
-        <Link className="btn btn-primary btn-lg" to="/blog">Renu's Free Education Blog</Link>
+        <>
+        {signedIn == true? 
+        <Link className="btn btn-primary btn-lg" to="/blog" onClick={signInWithGoogle}>Sign Out</Link>
+        :
+        <Link className="btn btn-primary btn-lg" to="/blog" onClick={signInWithGoogle}>Sign In</Link>
+        }
+        </>
+
       </div>
     </div>
 

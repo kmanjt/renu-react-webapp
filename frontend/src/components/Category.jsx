@@ -24,10 +24,16 @@ useEffect(() => {
 
     setCurrentCategory(capitalizeFirstLetter(category));
     const fetchData = async () => {
-        const res = await axios.post(`http://localhost:8000/api/blog/category`, { category }, config);
-        setBlogs(res.data);
-    };
-    fetchData();
+        axios
+        .post(`http://localhost:8000/api/blog/category`, { category }, config)
+        .then(res => {
+            setBlogs(res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }    
+    fetchData()
     }
     , [category]);
     
