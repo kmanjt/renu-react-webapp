@@ -1,7 +1,7 @@
 # Renu - DCU Enactus Project
 ## Full Stack React & Django Web Application
 
-* Using React, Django, Google Firebase DB, Auth.
+* Using React, Django, MySQL DB, Google Firebase DB, Auth.
 * To see our site: [Click here.](http://www.renu-ireland.com/)
 
 
