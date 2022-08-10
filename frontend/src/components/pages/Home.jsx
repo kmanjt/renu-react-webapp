@@ -5,7 +5,7 @@ import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase-config';
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 const Item = styled('div')(({ theme }) => ({
     
@@ -27,6 +27,11 @@ function Home() {
       console.log(err)
     })
   };
+
+  const signOut = () => {
+    auth.signOut();
+  }
+
   auth.onAuthStateChanged((user) => {
     if (user) { 
       setSignedIn(true);
@@ -51,9 +56,9 @@ function Home() {
         <p className="col-md-8 fs-4">The smart way to compost.<br/>Welcome to Renu Ireland! Check out our blogs below.</p>
         <>
         {signedIn == true? 
-        <Link className="btn btn-primary btn-lg" to="/blog" onClick={signInWithGoogle}>Sign Out</Link>
+        <Link className="btn btn-primary btn-lg" to="/" onClick={signOut}>Sign Out</Link>
         :
-        <Link className="btn btn-primary btn-lg" to="/blog" onClick={signInWithGoogle}>Sign In</Link>
+        <Link className="btn btn-primary btn-lg" to="/" onClick={signInWithGoogle}>Sign In</Link>
         }
         </>
 
