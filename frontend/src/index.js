@@ -13,6 +13,7 @@ import Community from './components/pages/Community';
 import Blog from './components/pages/Blog';
 import BlogDetail from './components/pages/BlogDetail';
 import Category from './components/Category';
+import Profile from './components/pages/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
       <Route path="category/:id" element={<Category/>}/>
       <Route path='blog/:id' element={<BlogDetail/>}/>
       <Route path="events" element={<Events />} />
+      <Route path="profile" element={<Profile />} />
       <Route path="community" element={<Community />} />
     </Route>
   </Routes>
