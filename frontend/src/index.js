@@ -14,9 +14,14 @@ import Blog from './components/pages/Blog';
 import BlogDetail from './components/pages/BlogDetail';
 import Category from './components/Category';
 import Profile from './components/pages/Profile';
+import { AuthProvider } from './hocs/Auth';
+import PrivateRoutes from './hocs/PrivateRoutes';
+import Login from './components/pages/Login';
+import Register from './components/pages/Registration';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <AuthProvider>
   <BrowserRouter>
   <Routes>
     <Route path="/" element={<Layout />}>
@@ -27,11 +32,16 @@ root.render(
       <Route path="category/:id" element={<Category/>}/>
       <Route path='blog/:id' element={<BlogDetail/>}/>
       <Route path="events" element={<Events />} />
-      <Route path="profile" element={<Profile />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path="profile" element={<Profile/>} />
+      </Route>
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
       <Route path="community" element={<Community />} />
     </Route>
   </Routes>
 </BrowserRouter>
+</AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
