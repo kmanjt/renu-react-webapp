@@ -1,7 +1,7 @@
 from django.contrib import admin
 from jmespath import search
 from django_summernote.admin import SummernoteModelAdmin
-from .models import BlogPost
+from .models import BlogPost, Comment
 
 # Register your models here.
 class BlogPostAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
@@ -13,3 +13,4 @@ class BlogPostAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     summernote_fields = ('content',)
 
 admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(Comment)
