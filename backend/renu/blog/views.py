@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from blog.models import BlogPost
 from blog.serializers import BlogPostSerializer
-
+from django.conf import settings
 
 # Create your views here.
 class BlogPostListView(ListAPIView):
@@ -39,3 +39,4 @@ class BlogPostCategoryView(APIView):
         serializer = BlogPostSerializer(queryset, many=True)
 
         return Response(serializer.data)
+

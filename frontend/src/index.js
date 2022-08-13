@@ -18,6 +18,7 @@ import { AuthProvider } from './hocs/Auth';
 import PrivateRoutes from './hocs/PrivateRoutes';
 import Login from './components/pages/Login';
 import Register from './components/pages/Registration';
+import Comment from './components/pages/Comments';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,6 +37,7 @@ root.render(
         <Route path="profile" element={<Profile/>} />
       </Route>
       <Route path="login" element={<Login />} />
+      <Route path="comment" element={<Comment/>} />
       <Route path="register" element={<Register />} />
       <Route path="community" element={<Community />} />
     </Route>
