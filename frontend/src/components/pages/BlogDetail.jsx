@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { UserAuth } from '../../hocs/Auth';
 
 const BlogDetail = (props) => {
     const [blog, setBlog] = useState({});
+    const [commentBody, setCommentBody] = useState("");
+    const { user } = UserAuth();
 
     const createBlog = () => {
         return {__html: blog.content}
@@ -17,6 +20,26 @@ const BlogDetail = (props) => {
         }
     };
     
+    function handleSubmit() {
+        const uid = user.email;
+        const photoURL = user.photoURL;
+        const payload = {
+            uid, photoURL, commentBody
+        }
+        console.log(JSON.stringify(payload))
+        fetch("http://localhost:8000/api/comment",
+        {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(payload)
+        }).then((res) => {
+            console.log(res)
+            alert("New comment logged.")
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             axios

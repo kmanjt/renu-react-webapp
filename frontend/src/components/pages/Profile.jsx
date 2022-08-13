@@ -38,6 +38,8 @@ function Profile() {
         }).then((res) => {
             console.log(res)
             alert("New comment logged.")
+        }).catch((err) => {
+            console.log(err)
         })
     }
 

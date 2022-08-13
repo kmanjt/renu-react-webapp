@@ -84,6 +84,7 @@ useEffect(() => {
                 </nav>
             </div>
             {getCategoryBlogs()}
+            <p className='lead mb-5'><Link to='/blog' className='font-weight-bold'>Back to Blogs</Link></p>
         </div>
     )
 }
