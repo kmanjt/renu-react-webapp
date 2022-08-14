@@ -49,5 +49,7 @@ class Comment(APIView):
         except:
             return Response("Something went wrong.")
 
-    def get_comments(self, request, *args, **kwargs):
-      comments = database.child(blog_comments)
+    def get(self, request, *args, **kwargs):
+      slug = request.data.get('slug')
+      comments = db.child('blog_comments').get(slug)
+      return Response(array)

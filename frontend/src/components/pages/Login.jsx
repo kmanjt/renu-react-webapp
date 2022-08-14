@@ -12,24 +12,29 @@ function Login() {
     const[password, setPassword] = useState("");
     const[errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
-    const {signIn, googleSignIn} = UserAuth();
+    const {signIn, googleSignIn, user} = UserAuth();
 
     const handleGoogleSignIn = async (e) => {
+      e.preventDefault();
       try {
-
         await googleSignIn();
       } catch (error) {
         console.log(error)
       }
-      navigate('/profile')
     }
+
+    useEffect(() => {
+      if(user != null) {
+        navigate('/profile')
+      }
+    }, [user])
+    
 
     const handleSubmit = async (e) => {
       e.preventDefault();
       setErrorMessage('');
       try {
         await signIn(email, password)
-        navigate('/profile')
       } catch (error) {
         setErrorMessage(error.message)
       }
@@ -56,10 +61,12 @@ function Login() {
       </label>
     </div>
     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
     <div className="pt-1">
-    <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={handleGoogleSignIn}>Sign in with Google</button>
+    <form onSubmit={handleGoogleSignIn}>
+    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in with Google</button>
+    </form>
     </div>
-  </form>
 </div>
 
     )

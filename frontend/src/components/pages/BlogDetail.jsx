@@ -52,7 +52,18 @@ const BlogDetail = (props) => {
                 console.log(err)
             })
         };
+        const fetchComments = async () => {
+            axios
+            .get(`/api/comment`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        };
         fetchData();
+        fetchComments();
         }
     , [useParams().id]);
 

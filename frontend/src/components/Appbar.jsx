@@ -25,7 +25,7 @@ import { useContext } from 'react';
 import { UserAuth } from '../hocs/Auth';
 
 const pages = ['Blog', 'Community', 'Events'];
-const settings = ['Profile'];
+const settings = ['Profile', 'Account', 'Dashboard'];
 
 
 
@@ -189,8 +189,7 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {user && <>
-                {settings.map((setting) => (
+              {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center"><Link to={`/${setting}`}>{setting}</Link></Typography>
                 </MenuItem>
@@ -199,12 +198,6 @@ const ResponsiveAppBar = () => {
               <MenuItem key="logout" onClick={handleCloseUserMenu} >
               <Typography textAlign="center" onClick={handleLogout}>Logout</Typography>
               </MenuItem>
-              </>}
-              {!user && <>
-                <MenuItem key="Sign In" onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"><Link to={`/login`}>Sign In</Link></Typography>
-                </MenuItem>
-              </>}
             </Menu>
           </Box>
         </Toolbar>
