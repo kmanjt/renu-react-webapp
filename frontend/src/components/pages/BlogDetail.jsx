@@ -21,10 +21,11 @@ const BlogDetail = (props) => {
     };
     
     function handleSubmit() {
-        const uid = user.email;
+        const username = user.displayName;
+        const uid = user.uid;
         const photoURL = user.photoURL;
         const payload = {
-            uid, photoURL, commentBody
+            username, uid, photoURL, commentBody, slug
         }
         console.log(JSON.stringify(payload))
         fetch("http://localhost:8000/api/comment",

@@ -28,20 +28,26 @@ db=firebase.database()
 class Comment(APIView):
     def post(self, request, *args, **kwargs):
         uid = request.data.get('uid')
+        username = request.data.get('username')
         photoURL = request.data.get('photoURL')
         commentBody = request.data.get('commentBody')
+        slug = request.data.get('slug')
         now = datetime.now()
         current_date = now.strftime("%d:%m:%Y")
         current_time = now.strftime("%H:%M:%S")
         try:
             # const payload={name, time, reason}
             data = {
-              "name":uid,
+              "username":username,
+              "uid":uid,
               "time":current_date + " " + current_time,
               "photoURL":photoURL,
               "body":commentBody
             }
-            results = db.child("blog-comments").push(data)
+            results = db.child("blog-comments").child(slug).push(data)
             return Response("Time Added")
         except:
             return Response("Something went wrong.")
+
+    def get_comments(self, request, *args, **kwargs):
+      comments = database.child(blog_comments)
