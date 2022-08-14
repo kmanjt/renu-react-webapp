@@ -9,6 +9,7 @@ from blog.serializers import BlogPostSerializer
 from django.conf import settings
 from datetime import datetime
 import pyrebase
+import json
 import os
 
 config={
@@ -49,7 +50,14 @@ class Comment(APIView):
         except:
             return Response("Something went wrong.")
 
-    def get(self, request, *args, **kwargs):
-      slug = request.data.get('slug')
-      comments = db.child('blog_comments').get(slug)
-      return Response(array)
+class CommentList(APIView):
+  def post(self, request, *args, **kwargs):
+        slug = request.data.get('slug')
+        comments = db.child('blog-comments').child(slug).get()
+        array = []
+        try:
+          for comment in comments.each():
+            array.append(comment.val())
+          return Response(array)
+        except:
+          return Response([])

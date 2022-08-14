@@ -5,6 +5,7 @@ import { UserAuth } from '../../hocs/Auth';
 
 const BlogDetail = (props) => {
     const [blog, setBlog] = useState({});
+    const [commentList, setCommentList] = useState([]);
     const [commentBody, setCommentBody] = useState("");
     const { user } = UserAuth();
 
@@ -20,6 +21,39 @@ const BlogDetail = (props) => {
         }
     };
     
+    const loadComments = () => {
+        let list = [];
+        let result = [];
+
+        commentList.map(blogPost => {
+            return list.push(
+                <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div className="col p-4 d-flex flex-column position-static">
+          <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.username)}</strong>
+          <h3 className="mb-0">{blogPost.time}</h3>
+          <p className="card-text mb-auto">{blogPost.body}</p>
+        </div>
+        <div className="col-auto d-none d-lg-block">
+            <img width='200' height='250' src={blogPost.photoURL} alt='thumbnail' />
+        </div>
+        </div>
+            );
+        });
+        for (let i=0; i < list.length; i += 2) {
+            result.push(
+                <div key={i} className='row mb-2'>
+                    <div className='col-md-6'>
+                        {list[i]}
+                    </div>
+                    <div className='col-md-6'>
+                        {list[i+1] ? list[i+1] : null}
+                    </div>
+                </div>
+            )
+        }
+        return result;
+    }
+
     function handleSubmit() {
         const username = user.displayName;
         const uid = user.uid;
@@ -53,10 +87,11 @@ const BlogDetail = (props) => {
             })
         };
         const fetchComments = async () => {
+            console.log({slug})
             axios
-            .get(`/api/comment`)
+            .post(`http://localhost:8000/api/comments`, {slug})
             .then(res => {
-                console.log(res)
+                setCommentList(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -86,6 +121,14 @@ const BlogDetail = (props) => {
             </button>
             </>}
             <p className='lead mb-5'><Link to='/blog' className='font-weight-bold'>Back to Blogs</Link></p>
+            {commentList && <>
+            {loadComments()}
+            </>
+            }
+            {!commentList && 
+            <>
+            No comments yet.
+            </>}
         </div>
     )
 }
