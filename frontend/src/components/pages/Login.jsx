@@ -14,12 +14,14 @@ function Login() {
     const navigate = useNavigate();
     const {signIn, googleSignIn} = UserAuth();
 
-    const handleGoogleSignIn = async () => {
+    const handleGoogleSignIn = async (e) => {
       try {
+
         await googleSignIn();
       } catch (error) {
         console.log(error)
       }
+      navigate('/profile')
     }
 
     const handleSubmit = async (e) => {
@@ -33,22 +35,7 @@ function Login() {
       }
     }
 
-    function handleClick() {
-
-    }
-
-    function signInWithGoogle() {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(firebase, provider)
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      };
-
-
+ 
     return (
         <div className="form-signin w-100 m-auto pt-5">
   <form onSubmit={handleSubmit}>
