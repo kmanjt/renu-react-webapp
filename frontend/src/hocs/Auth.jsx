@@ -1,10 +1,14 @@
 import React, {useEffect, useState, createContext, useContext} from 'react';
 import app, { firebase, myFS } from '../firebase-config';
 import { 
-  getAuth, onAuthStateChanged, 
-  signInWithEmailAndPassword, signOut, 
+  getAuth,
+  GoogleAuthProvider, 
+  onAuthStateChanged, 
+  signInWithEmailAndPassword, 
+  signOut, 
   createUserWithEmailAndPassword,
-  updateProfile} from "firebase/auth";
+  updateProfile,
+  signInWithPopup} from "firebase/auth";
 import { doc, onSnapshot, setDoc, serverTimestamp } from 'firebase/firestore';
 import { storage } from '../firebase-config';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -36,6 +40,11 @@ export const AuthProvider = ({ children }) => {
       return signInWithEmailAndPassword(firebase, email, password)
     }
 
+    const googleSignIn = () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(firebase, provider);
+    }
+
     useEffect(() => {
         if (firebase) {
           const unsubscribe = onAuthStateChanged(firebase, (currentUser) => {
@@ -54,7 +63,7 @@ export const AuthProvider = ({ children }) => {
   
 
     return (
-        <AuthContext.Provider value = {{ signIn, logout, user, createUser, updateDisplayName}}>
+        <AuthContext.Provider value = {{ googleSignIn, signIn, logout, user, createUser, updateDisplayName}}>
         {children}
         </AuthContext.Provider>
         )

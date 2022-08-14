@@ -12,8 +12,15 @@ function Login() {
     const[password, setPassword] = useState("");
     const[errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
-    const {signIn} = UserAuth();
+    const {signIn, googleSignIn} = UserAuth();
 
+    const handleGoogleSignIn = async () => {
+      try {
+        await googleSignIn();
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -63,7 +70,7 @@ function Login() {
     </div>
     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     <div className="pt-1">
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in with Google</button>
+    <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={handleGoogleSignIn}>Sign in with Google</button>
     </div>
   </form>
 </div>
