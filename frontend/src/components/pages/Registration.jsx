@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './Login.css';
 import logo from '../../assets/renu_logo.jpg'
 import app, { firebase } from '../../firebase-config';
@@ -20,15 +20,17 @@ function Register() {
       setErrorMessage('');
       try {
         await createUser(email, password, name);
-        navigate('/profile');
       } catch (error) {
-        if (user) {
-          navigate('/profile')
-        }
         setErrorMessage(error.message)
         console.log(errorMessage)
       }
     };
+
+    useEffect(() => {
+      if(user != null) {
+        navigate('/profile')
+      }
+    }, [user])
 
     const onSubmit = e => {
         e.preventDefault()
