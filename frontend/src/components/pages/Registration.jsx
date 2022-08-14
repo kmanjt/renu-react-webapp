@@ -13,15 +13,18 @@ function Register() {
     const [password, setPassword]= useState('');
     const [errorMessage, setErrorMessage]=useState('');
     const navigate = useNavigate();
-    const {createUser} = UserAuth();
+    const {createUser, updateDisplayName, user} = UserAuth();
 
     const handleSubmit = async (e) => {
       e.preventDefault();
       setErrorMessage('');
       try {
-        await createUser(email, password);
+        await createUser(email, password, name);
         navigate('/profile');
       } catch (error) {
+        if (user) {
+          navigate('/profile')
+        }
         setErrorMessage(error.message)
         console.log(errorMessage)
       }

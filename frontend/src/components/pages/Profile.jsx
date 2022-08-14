@@ -64,6 +64,7 @@ function Profile() {
             <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
             <Avatar src={user.photoURL} alt="Profile Picture" />
             <p>User Email: {user?.email}</p>
+            <p>Username: {user?.displayName}</p>
             <button onClick={handleLogout}>Logout</button>
 
             <div>

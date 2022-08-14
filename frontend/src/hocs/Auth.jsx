@@ -13,13 +13,19 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [displayName, setDisplayName] = useState("");
     const [loading, setLoading] = useState(false);
     const [authLoading, setAuthLoading] = useState(true);
     const [authErrorMessage, setAuthErrorMessage] = useState();
 
-    const createUser = (email, password) => {
-      return createUserWithEmailAndPassword(firebase, email, password);
+    const createUser = (email, password, displayName) => {
+      createUserWithEmailAndPassword(firebase, email, password);
+      return updateProfile(user, {displayName: displayName});
     };
+
+    const updateDisplayName = (user, displayname) => {
+      return updateProfile(user, {displayName: displayName});
+    }
 
     const logout = () => {
       setUser(null);
@@ -48,7 +54,7 @@ export const AuthProvider = ({ children }) => {
   
 
     return (
-        <AuthContext.Provider value = {{ signIn, logout, user, createUser}}>
+        <AuthContext.Provider value = {{ signIn, logout, user, createUser, updateDisplayName}}>
         {children}
         </AuthContext.Provider>
         )

@@ -62,6 +62,17 @@ const BlogDetail = (props) => {
             <h4>{blog.month} {blog.day}</h4>
             <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <hr />
+            {!user &&
+            <>
+            You must be logged in to comment.
+            </>}
+            {user &&
+            <>
+            <input type="text" autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)}></input>
+            <button onClick={handleSubmit}>
+            Submit
+            </button>
+            </>}
             <p className='lead mb-5'><Link to='/blog' className='font-weight-bold'>Back to Blogs</Link></p>
         </div>
     )
