@@ -23,6 +23,7 @@ import { BrowserRouter, Route, Link, useNavigate } from "react-router-dom";
 import { signOut } from 'firebase/auth';
 import { useContext } from 'react';
 import { UserAuth } from '../hocs/Auth';
+import './baseStyle.css'
 
 const pages = ['Blog', 'Community', 'Events'];
 const settings = ['Profile', 'Account', 'Dashboard'];
@@ -61,7 +62,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar style={{ background: "#B2D3AB"}} position="static">
+    <AppBar style={{ background: "#74948b"}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <IconButton
