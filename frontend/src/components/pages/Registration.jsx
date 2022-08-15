@@ -50,7 +50,7 @@ function Register() {
     return (
         <div className="form-signin w-100 m-auto pt-5">
   <form onSubmit={handleSubmit}>
-    <h1 className="h3 mb-3 fw-normal pt-5">Please sign up</h1>
+    <h1 className="h3 mb-3 fw-normal pt-5">Please register</h1>
     <div className="form-floating">
       <input type="name" className="form-control" id="floatingInput" placeholder="Username" autoFocus value={name} onChange={e => setName(e.target.value)}></input>
       <label for="floatingInput">Username</label>
