@@ -12,6 +12,8 @@
 
 Use `pip3 install -r requirements.txt`.
 
+From frontend dir: do npm run build
+From backend dir: configure settings.py database config, do python manage.py makemigrations and python manage.py migrate
 
 
 ## Contributors
