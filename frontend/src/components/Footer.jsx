@@ -75,7 +75,7 @@ export default function Footer() {
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />
-                info@example.com
+                support@renu-ireland.com
               </p>
               <p>
                 <MDBIcon icon="phone" className="me-3" /> + 353 87 337 3064
