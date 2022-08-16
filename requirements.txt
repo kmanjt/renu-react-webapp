@@ -8,3 +8,4 @@ mysqlclient
 jmespath
 itsdangerous
 mysql-connector-python
+requests

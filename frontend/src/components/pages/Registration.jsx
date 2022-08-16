@@ -5,7 +5,8 @@ import app, { firebase } from '../../firebase-config';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { updateProfile, getAuth, createUserWithEmailAndPassword, updateCurrentUser } from "firebase/auth";
 import { UserAuth } from '../../hocs/Auth';
-
+import ReCAPTCHA from "react-google-recaptcha";
+import { useRef } from 'react';
 
 function Register() {
     const [name, setName]= useState('');
@@ -14,6 +15,7 @@ function Register() {
     const [errorMessage, setErrorMessage]=useState('');
     const navigate = useNavigate();
     const {createUser, updateDisplayName, user} = UserAuth();
+    const [captchaResult, setCaptchaResult] = useState()
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -25,6 +27,20 @@ function Register() {
         console.log(errorMessage)
       }
     };
+
+    const handleRecaptcha = (value) => {
+      fetch('/api/recaptcha/', {
+        method: 'POST',
+        body: JSON.stringify({ 'captcha_value': value }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+       .then(res => res.json())
+       .then(data => {
+        console.log(data)
+         console.log(data.captcha.success)
+         setCaptchaResult(data.captcha.success)
+       }) 
+    }
 
     useEffect(() => {
       if(user != null) {
@@ -69,8 +85,13 @@ function Register() {
         <input type="checkbox" value="remember-me"></input>
       </label>
     </div>
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-  </form>
+    <ReCAPTCHA
+    sitekey="6Lft9n4hAAAAAJXpj4zCPCEMXHfn4X-StwlWcrzp"
+    data-theme="dark"
+    onChange={handleRecaptcha}
+    />
+    <button disabled={!captchaResult} className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
 </div>
 
     )
