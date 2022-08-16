@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { UserAuth } from '../../hocs/Auth';
+import "../baseStyle.css"
 
 const BlogDetail = (props) => {
     const [blog, setBlog] = useState({});
@@ -103,7 +104,8 @@ const BlogDetail = (props) => {
     , [useParams().id]);
 
     return (
-        <div className='container mt-3'>
+        <div className="main-theme">
+        <div className='container mt-3 rounded p-4 section'>
             <h1 className='display-2'>{blog.title}</h1>
             <h2 className='text-mted mt-3'>Category: {capitalizeFirstLetter(blog.category)}</h2>
             <h4>{blog.month} {blog.day}</h4>
@@ -120,7 +122,8 @@ const BlogDetail = (props) => {
             Submit
             </button>
             </>}
-            <p className='lead mb-5'><Link to='/blog' className='font-weight-bold'>Back to Blogs</Link></p>
+            <br></br>
+           
             {commentList && <>
             {loadComments()}
             </>
@@ -129,6 +132,9 @@ const BlogDetail = (props) => {
             <>
             No comments yet.
             </>}
+            <button className='btn m-3 p-2 btn-lg headers'><Link className="dark-green" to='/blog'>Back to Blogs</Link>
+            </button>
+        </div>
         </div>
     )
 }

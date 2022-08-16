@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../baseStyle.css';
 
 export default function Blog() {
     const [blogs, setBlogs]=useState([]);
@@ -46,7 +47,7 @@ export default function Blog() {
 
         blogs.map(blogPost => {
             return list.push(
-    <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-light p-3">
         <div className="col p-4 d-flex flex-column position-static">
           <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.category)}</strong>
           <h3 className="mb-0">{blogPost.title}</h3>
@@ -77,6 +78,7 @@ export default function Blog() {
     };
 
 return (
+    <div className=' main-theme'>
     <div className='container'>
         <div className="nav-scroller py-1 mb-2">
         <nav className="nav d-flex justify-content-between">
@@ -87,16 +89,19 @@ return (
         </nav>
       </div>
 
-    <div className="p-4 p-md-5 mb-4 rounded text-bg-dark mt-5">
+    <div className="p-4 p-md-5 mb-4 rounded section mt-5">
     <div className="col-md-6 px-0">
       <h1 className="display-4 fst-italic">{featuredBlog.title}</h1>
-        <p className="lead my-3">{featuredBlog.excerpt}</p>
-        <p className="lead mb-0">
-            <Link to={`/blog/${featuredBlog.slug}`} className="text-white fw-bold">
-                Continue reading...</Link></p>
+        <p className="lead my-3 ">{featuredBlog.excerpt}</p>
+        <button className='btn m-3 p-2 btn-lg headers'>
+            <Link className="dark-green" to={`/blog/${featuredBlog.slug}`}>
+                Continue reading...</Link></button>
     </div>
   </div>
+  <div >
     {getBlogs()}
+    </div>
+    </div>
     </div>
     );
 }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import "./baseStyle.css"
 
 const Category = (props) => {
     const [blogs, setBlogs]=useState([]);
@@ -43,7 +44,7 @@ useEffect(() => {
 
         blogs.map(blogPost => {
             return list.push(
-                <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-light p-3">
         <div className="col p-4 d-flex flex-column position-static">
           <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.category)}</strong>
           <h3 className="mb-0">{blogPost.title}</h3>
@@ -73,8 +74,10 @@ useEffect(() => {
     }
 
     return (
-        <div className='container mt-3'>
+        <div className='main-theme'>
+        <div className='container mt-3 '>
             <h3 className='display-4'>{currentCategory} Category</h3>
+            <br></br>
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-between">
                     <Link className="p-2 link-secondary" to="/category/gardening">Gardening</Link>
@@ -83,8 +86,15 @@ useEffect(() => {
                     <Link className="p-2 link-secondary" to="/category/environment">Environment</Link>
                 </nav>
             </div>
+            <div className='section p-4 rounded'>
+                <div>
             {getCategoryBlogs()}
-            <p className='lead mb-5'><Link to='/blog' className='font-weight-bold'>Back to Blogs</Link></p>
+            </div>
+            </div>
+            <button className='btn m-3 p-2 btn-lg headers'>
+                <Link className="text-dark" to='/blog'>Back to Blogs</Link>
+            </button>
+        </div>
         </div>
     )
 }
