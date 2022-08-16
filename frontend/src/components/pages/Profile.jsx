@@ -59,7 +59,8 @@ function Profile() {
     }, [user])
 
     return (
-        <div className="container pt-5 py-4">
+        <div className="main-theme">
+        <div className="container pt-5 py-4 ">
             <input type="file" onChange={handleChange} />
             <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
             <Avatar src={user.photoURL} alt="Profile Picture" />
@@ -74,6 +75,7 @@ function Profile() {
         <button onClick={handleSubmit}>
             Submit
         </button>
+        </div>
         </div>
         </div>
     )

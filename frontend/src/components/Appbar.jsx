@@ -81,7 +81,7 @@ const ResponsiveAppBar = () => {
             alt="Renu Logo."
             src={Renu}
         />
-        <Link to="/"></Link>
+        <Link className='link-dark' to="/"></Link>
           </IconButton>
           <Typography
             variant="h6"
@@ -98,7 +98,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-           <Link to="/">ReNu</Link> 
+           <Link className='link-dark' to="/">ReNu</Link> 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -132,7 +132,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><Link to={`/${page}`}>{page}</Link></Typography>
+                  <Typography textAlign="center"><Link className='link-dark' to={`/${page}`}>{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -163,7 +163,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-              <Link to={`/${page}`}>{page}</Link>
+              <Link className='link-dark' to={`/${page}`}>{page}</Link>
               </Button>
             ))}
           </Box>
@@ -192,7 +192,7 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"><Link to={`/${setting}`}>{setting}</Link></Typography>
+                  <Typography textAlign="center"><Link className='link-dark' to={`/${setting}`}>{setting}</Link></Typography>
                 </MenuItem>
               ))}
               

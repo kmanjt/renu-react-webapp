@@ -5,7 +5,7 @@ import './baseStyle.css'
 
 export default function Footer() {
   return (
-    <MDBFooter className='text-center text-lg-start text-muted headers'>
+    <MDBFooter className='text-center text-lg-start headers text-dark'>
      <section className=''>
         <MDBContainer className='text-center text-md-start '>
           <MDBRow className=' pt-4'>

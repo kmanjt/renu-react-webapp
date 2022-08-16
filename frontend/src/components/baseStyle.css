@@ -6,3 +6,19 @@
 .headers {
     background-color: #74948b;
 }
+
+.section {
+    background-color: #D8E1DF;
+}
+
+.dark-green {
+    color: #74948b;
+}
+
+.dark-section {
+    background-color: #8FA29D;
+}
+
+.light-section {
+    background-color: #E2E8E7;
+}
