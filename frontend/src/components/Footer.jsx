@@ -2,6 +2,7 @@ import React from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import './baseStyle.css'
+import {Link} from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -78,15 +79,16 @@ export default function Footer() {
                 support@renu-ireland.com
               </p>
               <p>
-                <MDBIcon icon="phone" className="me-3" /> + 353 87 337 3064
-              </p>
+                <MDBIcon icon="pager" className="me-3" /> <Link className="text-dark" to="/contact">
+Contact Form</Link>
+              </p> 
+
             </MDBCol>
           </MDBRow>
         </MDBContainer>
       </section>
 
       <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-        © 2021 Copyright:
         <a className='text-reset fw-bold' href='#'>
           ReNu Ireland 
         </a>
