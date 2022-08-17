@@ -5,6 +5,7 @@ import Grid from '@mui/system/Unstable_Grid';
 import styled from '@mui/system/styled';
 import { Link } from 'react-router-dom';
 import '../baseStyle.css';
+import { UserAuth } from '../../hocs/Auth';
 
 const Item = styled('div')(({ theme }) => ({
     
@@ -14,12 +15,20 @@ const Item = styled('div')(({ theme }) => ({
   }));
 
 function Home() {
+  const {user} = UserAuth();
     return (
       <div className='main-theme'>
   <div className="container">
     <header className="pb-3 mb-4 border-bottom">
       <a href="/" className="d-flex align-items-center text-dark text-decoration-none">
-        <span className="fs-4">Welcome!</span>
+        {user &&
+        <>
+        <span className="fs-4">Welcome {user.displayName}!</span>
+  </>}
+        {!user &&
+        <>
+        <span className="fs-4">Welcome! Click to register for Renu!</span>
+        </>}
       </a>
     </header>
 
