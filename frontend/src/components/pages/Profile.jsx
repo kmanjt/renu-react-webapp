@@ -39,7 +39,7 @@ function Profile() {
     return (
         <div className="main-theme">
         <div className="container pt-5 py-4 ">
-            <input type="file" onChange={handleChange} />
+            <input type="file" onChange={handleChange} accept="image/png, image/jpeg" />
             <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
             <Avatar src={user.photoURL} alt="Profile Picture" />
             <p>User Email: {user?.email}</p>
