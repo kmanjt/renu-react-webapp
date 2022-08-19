@@ -18,6 +18,7 @@ import { AuthProvider } from './hocs/Auth';
 import PrivateRoutes from './hocs/PrivateRoutes';
 import Login from './components/pages/Login';
 import Register from './components/pages/Registration';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
