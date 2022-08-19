@@ -86,14 +86,15 @@ useEffect(() => {
                     <Link className="p-2 link-secondary" to="/category/environment">Environment</Link>
                 </nav>
             </div>
-            <div className='section p-4 rounded'>
+            <div className=' p-4 rounded'>
                 <div>
             {getCategoryBlogs()}
             </div>
+            <Link className=" m-3 p-3 btn-lg headers text-white" to='/blog'>Back to Blogs</Link>
             </div>
-            <button className='btn m-3 p-2 btn-lg headers'>
-                <Link className="text-dark" to='/blog'>Back to Blogs</Link>
-            </button>
+            
+                
+            
         </div>
         </div>
     )

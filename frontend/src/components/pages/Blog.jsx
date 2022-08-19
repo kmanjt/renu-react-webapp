@@ -93,9 +93,9 @@ return (
     <div className="col-md-6 px-0">
       <h1 className="display-4 fst-italic">{featuredBlog.title}</h1>
         <p className="lead my-3 ">{featuredBlog.excerpt}</p>
-        <button className='btn m-3 p-2 btn-lg headers'>
-            <Link className="dark-green" to={`/blog/${featuredBlog.slug}`}>
-                Continue reading...</Link></button>
+        <br></br>
+            <Link className="text-white m-3 p-3 btn-lg headers dark-green" to={`/blog/${featuredBlog.slug}`}>
+                Continue reading...</Link>
     </div>
   </div>
   <div >
