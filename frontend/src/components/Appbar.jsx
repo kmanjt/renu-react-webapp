@@ -74,6 +74,7 @@ const ResponsiveAppBar = () => {
           >
             <Box
             component="img"
+            className="rounded-circle"
             sx={{
             height: 64,
               

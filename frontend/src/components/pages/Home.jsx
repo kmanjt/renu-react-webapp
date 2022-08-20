@@ -36,7 +36,7 @@ function Home() {
       <div className="container-fluid py-5">
         <h1 className="display-5 fw-bold">Renu Ireland</h1>
         <p className="col-md-8 fs-4">The smart way to compost.<br/>Welcome to Renu Ireland! Check out our blogs below.</p>
-        <Link className="text-white headers dark-green btn-lg" to="/blog">Check out our blogs!</Link>
+        <Link className="text-white headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs!</Link>
 
       </div>
     </div>
@@ -44,7 +44,7 @@ function Home() {
     <div className="row align-items-md-stretch">
       <div className="col-md-6">
         <div className="h-100 p-5 dark-section rounded-3">
-          <h2>App coming soon!</h2>
+          <h2>App coming soon</h2>
           <p>Enjoy our content on the go!</p>
           <button className="btn btn-outline-light m-2" type="button">Google Store</button>
           <button className="btn btn-outline-light m-2" type="button">Apple Store</button>
@@ -52,9 +52,8 @@ function Home() {
       </div>
       <div className="col-md-6">
         <div className="h-100 p-5 light-section border rounded-3">
-          <h2>Add borders</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-          <p className="btn headers">Example button</p>
+          <h2>Fact of the day</h2>
+          <p>A fully grown tree can absorb around 21 kilograms of carbon dioxide per year.</p>
         </div>
       </div>
     </div>

@@ -1,18 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import './baseStyle.css'
 import {Link} from "react-router-dom";
+import Collapse from 'react-bootstrap/Collapse';
+import Button from 'react-bootstrap/Button';
 
 export default function Footer() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <MDBFooter className='text-center text-lg-start headers text-dark'>
-     <section className=''>
+    <MDBFooter className='text-center text-lg-start headers text-dark'  style={{
+      //position: "fixed",
+      left: 0,
+      bottom: 0,
+      right: 0,
+    }}>
+     
+
+      
+
+      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+        variant="outline-dark"
+        className="m-3 headers outline-success border-0"
+      >
+        {open &&
+        <div>
+          <i class="fas fa-arrow-circle-down fa-3x"></i>
+  </div>}
+        {!open &&
+        <>
+        <i class="fas fa-arrow-circle-up fa-3x"></i>
+        </>}
+       
+      </Button>
+      <Collapse in={open}>
+      <section className=''>
         <MDBContainer className='text-center text-md-start '>
           <MDBRow className=' pt-4'>
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                <MDBIcon icon="gem" className="me-3" />
+                <MDBIcon icon="tree" className="me-3" />
                  ReNu Ireland
               </h6>
               <p>
@@ -87,11 +120,15 @@ Contact Form</Link>
           </MDBRow>
         </MDBContainer>
       </section>
+      </Collapse>
 
-      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-        <a className='text-reset fw-bold' href='#'>
+      <br></br>
+
+        <div id="bottom">
+        <a className='text-reset fw-bold text-decoration-none' href='#'>
           ReNu Ireland 
         </a>
+        </div>
       </div>
     </MDBFooter>
   );

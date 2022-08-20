@@ -11,7 +11,7 @@ function App() {
   
   return (
     <React.Fragment>
-      <main>
+      <main style={{ backgrounColor:"#9fb5af"}}>
         <Appbar />
         
       </main>
