@@ -108,7 +108,7 @@ const BlogDetail = (props) => {
         <div className='container mt-3 rounded p-4 section'>
             <h1 className='display-2'>{blog.title}</h1>
             <h2 className='text-mted mt-3'>Category: {capitalizeFirstLetter(blog.category)}</h2>
-            <h4>{blog.month} {blog.day}</h4>
+            <h4>{blog.date_created}</h4>
             <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <hr />
             {!user &&

@@ -17,11 +17,9 @@ class BlogPost(models.Model):
     category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.GARDENING)
     thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
     excerpt = models.CharField(max_length=150)
-    month = models.CharField(max_length=3)
-    day = models.CharField(max_length=2)
     content = models.TextField()
     featured = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.now, blank=True)
+    date_created = models.DateField(default=datetime.now, blank=True)
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)

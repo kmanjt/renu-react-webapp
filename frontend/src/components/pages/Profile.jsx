@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import { UserAuth, upload } from '../../hocs/Auth';
 import { useNavigate } from 'react-router-dom';
 import axios  from 'axios';
+import { connectStorageEmulator } from 'firebase/storage';
 
 function Profile() {
     const { user, logout } = UserAuth();
@@ -27,7 +28,12 @@ function Profile() {
 
     function handleChange(e) {
         if (e.target.files[0]) {
-            setPhoto(e.target.files[0])
+            if (e.target.files[0].size < 1000 * 1024) {
+                setPhoto(e.target.files[0])
+            }
+            else {
+                alert("File must be less than 1mb!")
+            }
         }
     }
 
