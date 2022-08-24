@@ -89,8 +89,10 @@ class GetSavedBlogs(APIView):
       logs = db.child('users').child(uid).get()
       array = []
       for log in logs.each():
-        array.append(log.val())
+            array.append(log.val())
       return Response(array)
+
+
 
 class UnsaveBlog(APIView):
     def post(self, request, *args, **kwargs):
@@ -98,6 +100,12 @@ class UnsaveBlog(APIView):
       title = request.data.get('title')
       if uid and title:
         db.child('users').child(uid).child(title).remove()
-        return Response(f"Unsaved blog {title}")
+        logs = db.child('users').child(uid).get()
+        array = []
+        if (logs.each()):
+          for log in logs.each():
+                array.append(log.val())
+        return Response(array)
+        
       else:
         return Response(f"Could not unsave {title} for user {uid}")
