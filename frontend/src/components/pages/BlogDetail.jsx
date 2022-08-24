@@ -76,6 +76,32 @@ const BlogDetail = (props) => {
         })
     }
 
+    function saveBlog() {
+        const blog_title = blog.title;
+        const blog_date = blog.date_created;
+        const blog_excerpt = blog.excerpt;
+        const blog_link = `/blog/${blog.slug}`;
+        const blog_photo = blog.thumbnail;
+        const uid = user.uid;
+        console.log(blog_photo)
+        const payload = {
+            uid, blog_link, blog_excerpt, blog_date, blog_title, blog_photo
+        }
+        console.log(JSON.stringify(payload))
+        fetch("http://localhost:8000/api/saveblog",
+        {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(payload)
+        }).then((res) => {
+            console.log(res.data)
+            alert("Blog saved!")
+        }).catch((err) => {
+            console.log(err)
+            alert(err.message)
+        })
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             axios
@@ -111,6 +137,8 @@ const BlogDetail = (props) => {
             <h4>{blog.date_created}</h4>
             <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <hr />
+            {user &&
+          <button onClick={saveBlog}>Save Blog</button>}
             {!user &&
             <>
             You must be logged in to comment.

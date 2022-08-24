@@ -2,10 +2,13 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../baseStyle.css';
+import { UserAuth } from '../../hocs/Auth';
 
 export default function Blog() {
     const [blogs, setBlogs]=useState([]);
     const [featuredBlog, setFeaturedBlog]=useState([]);
+
+    const {user} = UserAuth();
 
     function fetchBlogs() {
         axios
@@ -17,6 +20,7 @@ export default function Blog() {
             console.log(err)
         })
     }    
+
 
     function fetchData() {
         axios
