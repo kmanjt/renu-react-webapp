@@ -25,7 +25,7 @@ import { useContext } from 'react';
 import { UserAuth } from '../hocs/Auth';
 import './baseStyle.css'
 
-const pages = ['Blog', 'Community', 'Events'];
+const pages = ['Blog', 'Community'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 

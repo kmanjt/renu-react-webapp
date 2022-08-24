@@ -133,7 +133,7 @@ const BlogDetail = (props) => {
             No comments yet.
             </>}
             <br></br>
-            <Link className="m-3 p-3 btn-lg headers text-white" to='/blog'>Back to Blogs</Link>
+            <Link className="m-3 p-3 btn-lg headers fs-5 text-white text-decoration-none" to='/blog'>Back to Blogs</Link>
            
         </div>
         </div>

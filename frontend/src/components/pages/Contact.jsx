@@ -40,7 +40,7 @@ function Contact() {
                         <div className='col-md-6 md-form mb-0'>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control type="email" placeholder="Your Email" />
                             <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                             </Form.Text>
@@ -50,7 +50,7 @@ function Contact() {
                         <div className='col-md-6'>
                         <Form.Group className="mb-3" >
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="name" placeholder="Name" />
+                            <Form.Control type="name" placeholder="Your Name" />
                         </Form.Group>
                          </div>
                     </div>
@@ -89,7 +89,7 @@ function Contact() {
                 </div>
                 
             <div className='col-md-4'>
-            <input disabled={!captchaResult} className=" p-4 headers text-white rounded" style={{ borderStyle: "none"}} type="submit" ></input>
+            <input disabled={!captchaResult} className="fs-5 p-4 headers text-white rounded" style={{ borderStyle: "none"}} type="submit" ></input>
            </div>
            </div>
             

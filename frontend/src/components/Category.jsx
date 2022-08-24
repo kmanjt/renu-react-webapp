@@ -90,7 +90,7 @@ useEffect(() => {
                 <div>
             {getCategoryBlogs()}
             </div>
-            <Link className=" m-3 p-3 btn-lg headers text-white" to='/blog'>Back to Blogs</Link>
+            <Link className=" m-3 p-3 btn-lg headers text-white text-decoration-none fs-5" to='/blog'>Back to Blogs</Link>
             </div>
             
                 
