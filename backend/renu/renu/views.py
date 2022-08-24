@@ -91,3 +91,13 @@ class GetSavedBlogs(APIView):
       for log in logs.each():
         array.append(log.val())
       return Response(array)
+
+class UnsaveBlog(APIView):
+    def post(self, request, *args, **kwargs):
+      uid = request.data.get('uid')
+      title = request.data.get('title')
+      if uid and title:
+        db.child('users').child(uid).child(title).remove()
+        return Response(f"Unsaved blog {title}")
+      else:
+        return Response(f"Could not unsave {title} for user {uid}")

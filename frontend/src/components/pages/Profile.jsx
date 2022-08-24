@@ -11,7 +11,24 @@ function Profile() {
     const [photo, setPhoto]=useState(null);
     const [loading, setLoading]=useState(false);
     const [savedBlogs, setSavedBlogs]=useState([]);
+    const [unsaveBlogTitle, setUnsaveBlogTitle]=useState("");
     const navigate = useNavigate();
+
+    const unsaveBlog = (e) => {
+        const uid = user.uid;
+        const title = e;
+        axios
+        .post(`/api/unsaveblog`, { uid, title })
+        .then(res => {
+            console.log(res.data);
+            alert("Blog unsaved!")
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        setUnsaveBlogTitle("");
+        console.log(`Unsave blog title: ${unsaveBlogTitle}`)
+    }
 
     const loadSavedBlogs = () => {
         let list = [];
@@ -25,6 +42,8 @@ function Profile() {
           <h3 className="mb-0">{blogPost.date}</h3>
           <p className="card-text mb-auto">{blogPost.excerpt}</p>
           <Link to={`${blogPost.link}`}>Continue reading..</Link>
+          <br/>
+          <button onClick={(e) => {unsaveBlog(blogPost.title)}}>Unsave</button>
         </div>
         <div className="col-auto d-none d-lg-block">
             <img width='200' height='250' src={blogPost.photo} alt='thumbnail' />
@@ -66,7 +85,7 @@ function Profile() {
             setSavedBlogs(res.data)
         })
         .catch(err => {
-            console.log(err)
+            console.log(err.message)
         })
     };
 
