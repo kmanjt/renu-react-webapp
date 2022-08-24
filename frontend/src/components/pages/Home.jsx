@@ -27,7 +27,7 @@ function Home() {
   </>}
         {!user &&
         <>
-        <span className="fs-4">Welcome! Click to register for Renu!</span>
+        <span className="fs-4">Welcome! <Link to="/Login" className='text-dark text-decoration-none'> Click to sign in to Renu </Link></span>
         </>}
       </a>
     </header>
@@ -35,9 +35,13 @@ function Home() {
     <div className="p-5 mb-4 section rounded-3">
       <div className="container-fluid py-5">
         <h1 className="display-5 fw-bold">Renu Ireland</h1>
-        <p className="col-md-8 fs-4">The smart way to compost.<br/>Welcome to Renu Ireland! Check out our blogs below.</p>
-        <Link className="text-white headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs!</Link>
-
+        <div className='row'>
+        <p className="col-md-8 fs-4">Welcome to Renu Ireland! <br></br>
+         Catering for all your sustainable and environmental needs.</p>
+          <div className='col-md-4'>
+            <Link className="text-white fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
+          </div>
+        </div>
       </div>
     </div>
 

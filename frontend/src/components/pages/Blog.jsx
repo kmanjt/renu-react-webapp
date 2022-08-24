@@ -94,7 +94,7 @@ return (
       <h1 className="display-4 fst-italic">{featuredBlog.title}</h1>
         <p className="lead my-3 ">{featuredBlog.excerpt}</p>
         <br></br>
-            <Link className="text-white m-3 p-3 btn-lg headers dark-green" to={`/blog/${featuredBlog.slug}`}>
+            <Link className="text-white m-3 p-3 fs-5 btn-lg headers dark-green text-decoration-none" to={`/blog/${featuredBlog.slug}`}>
                 Continue reading...</Link>
     </div>
   </div>
