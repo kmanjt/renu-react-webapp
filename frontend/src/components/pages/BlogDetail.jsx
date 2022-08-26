@@ -112,7 +112,7 @@ const BlogDetail = (props) => {
             <div className="row d-flex justify-content-center">
 
   <div className="col-md-8 col-lg-6">
-    <div className="card shadow-0 border">
+    <div className="card shadow-0 border" >
       <div className="card-body p-4">
         <div className="form-outline mb-4">
         {user && <>
@@ -136,7 +136,7 @@ const BlogDetail = (props) => {
         return(
         <div className="row d-flex justify-content-center">
   <div className="col-md-8 col-lg-6">
-    <div className="card shadow-0 border">
+    <div className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
       <div className="card-body p-4">
 
         <div className="card mb-4">

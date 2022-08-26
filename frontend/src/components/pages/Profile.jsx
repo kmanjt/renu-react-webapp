@@ -18,7 +18,7 @@ function Profile() {
         const uid = user.uid;
         const title = e;
         axios
-        .post(`/api/unsaveblog`, { uid, title })
+        .post(`http://localhost:8000/api/unsaveblog`, { uid, title })
         .then(res => {
             setSavedBlogs(res.data)
             alert("Blog unsaved!")
