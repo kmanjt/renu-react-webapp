@@ -31,11 +31,11 @@ export default function Footer() {
       >
         {open &&
         <div>
-          <i class="fas fa-arrow-circle-down fa-3x"></i>
+          <i className="fas fa-arrow-circle-down fa-3x"></i>
   </div>}
         {!open &&
         <>
-        <i class="fas fa-arrow-circle-up fa-3x"></i>
+        <i className="fas fa-arrow-circle-up fa-3x"></i>
         </>}
        
       </Button>
