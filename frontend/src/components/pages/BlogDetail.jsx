@@ -22,6 +22,18 @@ const BlogDetail = (props) => {
         }
     };
     
+    const fetchComments = async () => {
+        console.log({slug})
+        axios
+        .post(`http://localhost:8000/api/comments`, {slug})
+        .then(res => {
+            setCommentList(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    };
+
     function handleSubmit() {
         const username = user.displayName;
         const uid = user.uid;
@@ -36,11 +48,11 @@ const BlogDetail = (props) => {
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(payload)
         }).then((res) => {
-            console.log(res)
-            commentList += payload
-            alert("New comment logged.")
+            console.log(res.data)
+            setCommentBody("")
+            fetchComments();
         }).catch((err) => {
-            console.log(err)
+            console.log(err.message)
         })
     }
 
@@ -65,10 +77,11 @@ const BlogDetail = (props) => {
             console.log(res.data)
             alert("Blog saved!")
         }).catch((err) => {
-            console.log(err)
             alert(err.message)
         })
     }
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -76,17 +89,6 @@ const BlogDetail = (props) => {
             .get(`/api/blog/${slug}`)
             .then(res => {
                 setBlog(res.data);
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        };
-        const fetchComments = async () => {
-            console.log({slug})
-            axios
-            .post(`http://localhost:8000/api/comments`, {slug})
-            .then(res => {
-                setCommentList(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -116,7 +118,7 @@ const BlogDetail = (props) => {
       <div className="card-body p-4">
         <div className="form-outline mb-4">
         {user && <>
-          <input type="text" id="addANote" className="form-control" placeholder="Type comment..." autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)} onKeyPress={event => {
+          <input type="text" id="addANote" className="form-control" placeholder="Type comment..." autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)} onBlur={() => setCommentBody("")} onKeyPress={event => {
                 if (event.key === 'Enter'){ 
                     handleSubmit()
                 }}

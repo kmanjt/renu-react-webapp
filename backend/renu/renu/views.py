@@ -46,7 +46,7 @@ class Comment(APIView):
               "body":commentBody
             }
             results = db.child("blog-comments").child(slug).push(data)
-            return Response("Time Added")
+            return Response("Comment added")
         except:
             return Response("Something went wrong.")
 
@@ -79,7 +79,7 @@ class SaveBlog(APIView):
               "photo":blog_photo
             }
             results = db.child("users").child(uid).child(blog_title).set(data)
-            return Response("Saved blog")
+            return Response("Blog saved")
         except:
             return Response("Something went wrong.")
     

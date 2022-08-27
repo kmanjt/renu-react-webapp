@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'renu.wsgi.application'
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'renu',
+        'NAME': 'test',
         'USER': 'root',
         'PASSWORD': '3883',
         'HOST': '127.0.0.1',
