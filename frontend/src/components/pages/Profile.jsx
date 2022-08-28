@@ -80,35 +80,69 @@ function Profile() {
 
     return (
         <div className="main-theme">
-        <div className="container pt-5 py-4 ">
-            <input type="file" onChange={handleChange} accept="image/png, image/jpeg" />
-            <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
-            <Avatar src={user.photoURL} alt="Profile Picture" />
-            <p>User Email: {user?.email}</p>
-            <p>Username: {user?.displayName}</p>
-            <button onClick={handleLogout}>Logout</button>
+        <div className="container section rounded-3 pt-5 py-4 ">
+            <div className='row'>
+                <div className='col-md-1 mb-1 '>
+                    <Avatar src={user.photoURL} alt="Profile Picture" sx={{ width: 66, height: 66 }} />
+                </div>
+                <div className='col-md-3'>
+                <h1 className='fs-1'>{user?.displayName}</h1>
+                </div>
+            </div>
+            <br>
+            </br>
+            <div className='row'>
+                <div className='col-md-4'>
+                    <h3>Change profile picture?</h3>
+                    <br></br>
+                    <input type="file" onChange={handleChange} accept="image/png, image/jpeg" />
+                    <button className="headers bth-lg rounded border-0 p-2" disabled={loading || !photo} onClick={handleClick}>Upload</button>
+                </div>
+                <div className='col-md-2'>
+                   
+                </div>
+            </div>
+            <br></br>
+            <br></br>
+            
             <div>
-            {
-              savedBlogs? 
-              savedBlogs.map((blogPost) => {
-              return(
-                <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div className="col p-4 d-flex flex-column position-static">
-          <strong className="d-inline-block mb-2 text-primary">{blogPost.title}</strong>
-          <h3 className="mb-0">{blogPost.date}</h3>
-          <p className="card-text mb-auto">{blogPost.excerpt}</p>
-          <Link to={`${blogPost.link}`}>Continue reading..</Link>
-          <br/>
-          <button onClick={(e) => {unsaveBlog(blogPost.title)}}>Unsave</button>
-        </div>
-        <div className="col-auto d-none d-lg-block">
-            <img width='200' height='250' src={blogPost.photo} alt='thumbnail' />
-        </div>
-        </div>
+                {savedBlogs.length != 0 && 
+                    <h3 className='fs-4'>Your saved blogs</h3>
+                }
+                {savedBlogs.length == 0 &&
+                    <h3 className='fs-4'>No saved blogs</h3>
+                }
+                {
+                savedBlogs? 
+                savedBlogs.map((blogPost) => {
+                return(
+                    <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        
+                        <div className="col p-4 d-flex flex-column position-static">
+                            <strong className="d-inline-block mb-2 text-primary">{blogPost.title}</strong>
+                            <h3 className="mb-0">{blogPost.date}</h3>
+                            <p className="card-text mb-auto">{blogPost.excerpt}</p>
+                            <Link to={`${blogPost.link}`}>Continue reading..</Link>
+                                <br/>
+                            </div>
+                            <div className='col-md-3'>
+                            <button  className='headers bth-lg rounded border-0 p-2' onClick={(e) => {unsaveBlog(blogPost.title)}}>Unsave</button>
+                        </div>
+                        <div className="col-auto d-none d-lg-block">
+                        <img width='200' height='250' src={blogPost.photo} alt='thumbnail' />
+                </div>
+            </div>
                )
               }): null
             }
             </div>
+            <br></br>
+            <div className='row'>
+                <div className='col-md-3'>
+                <button className='headers bth-lg rounded border-0 p-2' onClick={handleLogout}>Logout</button>
+                </div>
+            </div>
+            
         </div>
         </div>
     )

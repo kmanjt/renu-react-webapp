@@ -29,7 +29,7 @@ function Register() {
     };
 
     const handleRecaptcha = (value) => {
-      fetch('/api/recaptcha/', {
+      fetch('http://localhost:8000/api/recaptcha/', {
         method: 'POST',
         body: JSON.stringify({ 'captcha_value': value }),
         headers: { 'Content-Type': 'application/json' }
