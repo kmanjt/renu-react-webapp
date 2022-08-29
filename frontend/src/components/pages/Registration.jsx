@@ -22,9 +22,9 @@ function Register() {
       setErrorMessage('');
       try {
         await createUser(email, password, name);
+        await updateDisplayName(user, {'displayName':name})
       } catch (error) {
-        setErrorMessage(error.message)
-        alert(errorMessage)
+        alert(error.message)
       }
     };
 

@@ -10,30 +10,33 @@ import { Link, useParams } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 
 function Contact() {
-    const [captchaResult, setCaptchaResult] = useState()
+    const [captchaResult, setCaptchaResult] = useState();
+    const [loading, setLoading] = useState(false);
     const form = useRef();
 
     const sendEmail = (e) => {
         e.preventDefault();
-    
+        setLoading(true);
         emailjs.sendForm('service_k197jgn', 'contact_form', form.current, 'TU95-rFwW7g9PJueF')
           .then((result) => {
-              console.log(result.text);
-              alert("Your response has been submitted thank you.")
-          }, (error) => {
-              console.log(error.text);
-          });
+              setLoading(false);
+          })
+          .then(() => {
+            alert("Your response has been submitted thank you.")
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
         };
 
     const handleRecaptcha = (value) => {
-        fetch('/api/recaptcha/', {
+        fetch('http://localhost:8000/api/recaptcha/', {
           method: 'POST',
           body: JSON.stringify({ 'captcha_value': value }),
           headers: { 'Content-Type': 'application/json' }
         })
          .then(res => res.json())
          .then(data => {
-          console.log(data)
            console.log(data.captcha.success)
            setCaptchaResult(data.captcha.success)
          }) 
@@ -95,10 +98,17 @@ function Contact() {
             <div className="row text-center">
             <div className='col-md-4'>
             
+
+            
+            <ReCAPTCHA
+                sitekey="6Lft9n4hAAAAAJXpj4zCPCEMXHfn4X-StwlWcrzp"
+                data-theme="dark"
+                className="rounded"
+                onChange={handleRecaptcha}/>
                 </div>
-                
+
             <div className='col-md-4'>
-            <input  className="fs-5 p-4 headers text-white rounded" style={{ borderStyle: "none"}} type="submit" value="send"></input>
+            <input disabled={!captchaResult || loading} className="fs-5 p-4 headers text-white rounded" style={{ borderStyle: "none"}} type="submit" value="send"></input>
            </div>
            </div>
             

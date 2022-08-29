@@ -24,7 +24,9 @@ export const AuthProvider = ({ children }) => {
 
     const createUser = (email, password, displayName) => {
       createUserWithEmailAndPassword(firebase, email, password)
-
+      .then((user) => {
+        updateProfile(user, {displayName});
+      })
       .catch((err) => {
         console.log(err.message)
       });
