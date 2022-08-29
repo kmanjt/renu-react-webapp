@@ -1,3 +1,4 @@
+import { Avatar } from '@mui/material';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -22,38 +23,17 @@ const BlogDetail = (props) => {
         }
     };
     
-    const loadComments = () => {
-        let list = [];
-        let result = [];
-
-        commentList.map(blogPost => {
-            return list.push(
-                <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div className="col p-4 d-flex flex-column position-static">
-          <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.username)}</strong>
-          <h3 className="mb-0">{blogPost.time}</h3>
-          <p className="card-text mb-auto">{blogPost.body}</p>
-        </div>
-        <div className="col-auto d-none d-lg-block">
-            <img width='200' height='250' src={blogPost.photoURL} alt='thumbnail' />
-        </div>
-        </div>
-            );
-        });
-        for (let i=0; i < list.length; i += 2) {
-            result.push(
-                <div key={i} className='row mb-2'>
-                    <div className='col-md-6'>
-                        {list[i]}
-                    </div>
-                    <div className='col-md-6'>
-                        {list[i+1] ? list[i+1] : null}
-                    </div>
-                </div>
-            )
-        }
-        return result;
-    }
+    const fetchComments = async () => {
+        console.log({slug})
+        axios
+        .post(`http://localhost:8000/api/comments`, {slug})
+        .then(res => {
+            setCommentList(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    };
 
     function handleSubmit() {
         const username = user.displayName;
@@ -69,10 +49,11 @@ const BlogDetail = (props) => {
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(payload)
         }).then((res) => {
-            console.log(res)
-            alert("New comment logged.")
+            console.log(res.data)
+            setCommentBody("")
+            fetchComments();
         }).catch((err) => {
-            console.log(err)
+            console.log(err.message)
         })
     }
 
@@ -97,10 +78,11 @@ const BlogDetail = (props) => {
             console.log(res.data)
             alert("Blog saved!")
         }).catch((err) => {
-            console.log(err)
             alert(err.message)
         })
     }
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -113,56 +95,84 @@ const BlogDetail = (props) => {
                 console.log(err)
             })
         };
-        const fetchComments = async () => {
-            console.log({slug})
-            axios
-            .post(`http://localhost:8000/api/comments`, {slug})
-            .then(res => {
-                setCommentList(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        };
         fetchData();
         fetchComments();
         }
     , [useParams().id]);
 
     return (
+        <div>
         <div className="main-theme">
         <div className='container mt-3 rounded p-4 section'>
-            <h1 className='display-2'>{blog.title}</h1>
+            <h1 className='display-2 '>{blog.title}</h1>
             <h2 className='text-mted mt-3'>Category: {capitalizeFirstLetter(blog.category)}</h2>
             <h4>{blog.date_created}</h4>
             <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <hr />
             {user &&
-          <button onClick={saveBlog}>Save Blog</button>}
-            {!user &&
-            <>
-            You must be logged in to comment.
-            </>}
-            {user &&
-            <>
-            <input type="text" autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)}></input>
-            <button onClick={handleSubmit}>
-            Submit
-            </button>
-            </>}
+          <button className="headers bth-lg rounded border-0 p-2" onClick={saveBlog}>Save Blog</button>}
             <br></br>
-           
-            {commentList && <>
-            {loadComments()}
-            </>
+            <div className="row d-flex justify-content-center">
+
+  <div className="col-md-8 col-lg-6">
+    <div className="card shadow-0 border " style={{backgroundColor: '#f0f2f5'}}>
+      <div className="card-body p-4">
+        <div className="form-outline mb-4">
+        {user && <>
+          <input type="text" id="addAComment" className="form-control" placeholder="Type comment..." autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)} onBlur={() => setCommentBody("")} onKeyPress={event => {
+                if (event.key === 'Enter'){ 
+                    handleSubmit()
+                }}
             }
+                />
+          <label className="form-label">+ Add a Comment</label>
+          </>}
+          {!user && <>
+        <p>You must be logged in to post a comment.</p> </>}
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+            <>
+            {commentList.map((comment) => {
+        return(
+            <div className="row d-flex justify-content-center">
+                <div className="col-md-8 col-lg-6">
+                    <div className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
+                     <div className="card-body p-4">
+
+                        <div className="card mb-4">
+                            <div className="card-body">
+                                <p>{comment.body}</p>
+
+                                <div className="d-flex justify-content-between">
+                                    <div className="d-flex flex-row align-items-center">
+                                        <Avatar src={comment.photoURL} alt="avatar" width="25"
+                                        height="25" />
+                                        <p className="small mb-0 ms-2">{comment.username}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+)
+}
+            </>
             {!commentList && 
             <>
             No comments yet.
             </>}
             <br></br>
-            <Link className="m-3 p-3 btn-lg headers fs-5 text-white text-decoration-none" to='/blog'>Back to Blogs</Link>
+            <Link className="m-3 p-3 btn-lg headers fs-5 text-dark text-decoration-none" to='/blog'>Back to Blogs</Link>
            
+        </div>
         </div>
         </div>
     )

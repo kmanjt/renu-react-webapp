@@ -24,12 +24,12 @@ function Register() {
         await createUser(email, password, name);
       } catch (error) {
         setErrorMessage(error.message)
-        console.log(errorMessage)
+        alert(errorMessage)
       }
     };
 
     const handleRecaptcha = (value) => {
-      fetch('/api/recaptcha/', {
+      fetch('http://localhost:8000/api/recaptcha/', {
         method: 'POST',
         body: JSON.stringify({ 'captcha_value': value }),
         headers: { 'Content-Type': 'application/json' }
@@ -67,11 +67,11 @@ function Register() {
         <div className="form-signin w-100 m-auto pt-5">
   <form onSubmit={handleSubmit}>
     <h1 className="h3 mb-3 fw-normal pt-5">Please register</h1>
-    <div className="form-floating">
-      <input type="name" className="form-control" id="floatingInput" placeholder="Username" autoFocus value={name} onChange={e => setName(e.target.value)}></input>
+    <div className="form-floating mb-2">
+      <input type="name" className="form-control" id="floatingUser" placeholder="Username" autoFocus value={name} onChange={e => setName(e.target.value)}></input>
       <label for="floatingInput">Username</label>
     </div>
-    <div className="form-floating">
+    <div className="form-floating mb-2">
       <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" autoFocus value={email} onChange={e => setEmail(e.target.value)}></input>
       <label for="floatingInput">Email address</label>
     </div>
@@ -80,18 +80,15 @@ function Register() {
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div className="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"></input>
-      </label>
-    </div>
     <ReCAPTCHA
     sitekey="6Lft9n4hAAAAAJXpj4zCPCEMXHfn4X-StwlWcrzp"
     data-theme="dark"
     onChange={handleRecaptcha}
     />
-    <button disabled={!captchaResult} className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <br></br>
+    <button disabled={!captchaResult} className="w-100 btn-lg headers border-0 " type="submit">Sign Up</button>
     </form>
+    <br></br>
 </div>
 
     )
