@@ -55,9 +55,12 @@ function Home() {
         </div>
       </div>
       <div className="col-md-6">
-        <div className="h-100 p-5 light-section border rounded-3">
+        <div className="h-100 p-5 light-section border rounded-3 row">
+          
           <h2>Fact of the day</h2>
+          <div className='col-md-8'>
           <p>A fully grown tree can absorb around 21 kilograms of carbon dioxide per year.</p>
+          </div>
         </div>
       </div>
     </div>

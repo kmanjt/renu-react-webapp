@@ -53,14 +53,14 @@ export default function Blog() {
             return list.push(
     <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-light p-3">
         <div className="col p-4 d-flex flex-column position-static">
-          <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.category)}</strong>
+          <strong className="d-inline-block mb-2 text-dark">{capitalizeFirstLetter(blogPost.category)}</strong>
           <h3 className="mb-0">{blogPost.title}</h3>
           <div className="mb-1 text-muted">{blogPost.date_created}</div>
           <p className="card-text mb-auto">{blogPost.excerpt}</p>
-          <Link to={`/blog/${blogPost.slug}`} className="stretched-link">Continue reading</Link>
+          <Link to={`/blog/${blogPost.slug}`} className="stretched-link text-dark text-decoration-none">Continue reading...</Link>
         </div>
         <div className="col-auto d-none d-lg-block">
-            <img width='200' height='250' src={blogPost.thumbnail} alt='thumbnail' />
+            <img width='200' height='250' src={blogPost.thumbnail} alt='thumbnail' className='rounded'/>
         </div>
         </div>
             );
@@ -98,7 +98,7 @@ return (
       <h1 className="display-4 fst-italic">{featuredBlog.title}</h1>
         <p className="lead my-3 ">{featuredBlog.excerpt}</p>
         <br></br>
-            <Link className="text-white m-3 p-3 fs-5 btn-lg headers dark-green text-decoration-none" to={`/blog/${featuredBlog.slug}`}>
+            <Link className="text-dark m-3 p-3 fs-5 btn-lg headers dark-green text-decoration-none" to={`/blog/${featuredBlog.slug}`}>
                 Continue reading...</Link>
     </div>
   </div>

@@ -27,7 +27,7 @@ function Community() {
                         <h1 className="display-5 fw-bold">Get in Touch</h1>
                         <div className='row'>
                             <p className="col-md-8 fs-4">Have an idea for an event, blog post or collaboration?</p>
-                            <Link className="col-md-3 fs-5 btn-lg headers text-white text-decoration-none" to='/contact'>Contact Us</Link>
+                            <Link className="col-md-3 fs-5 btn-lg headers text-dark text-decoration-none" to='/contact'>Contact Us</Link>
                         </div>
                     </div>
                     </div>
