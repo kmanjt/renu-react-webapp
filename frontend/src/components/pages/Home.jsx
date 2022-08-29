@@ -39,7 +39,7 @@ function Home() {
         <p className="col-md-8 fs-4">Welcome to Renu Ireland! <br></br>
          Catering for all your sustainable and environmental needs.</p>
           <div className='col-md-4'>
-            <Link className="text-white fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
+            <Link className="text-dark fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
           </div>
         </div>
       </div>
