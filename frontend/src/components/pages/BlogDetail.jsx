@@ -1,3 +1,4 @@
+import { Avatar } from '@mui/material';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -103,28 +104,28 @@ const BlogDetail = (props) => {
         <div>
         <div className="main-theme">
         <div className='container mt-3 rounded p-4 section'>
-            <h1 className='display-2'>{blog.title}</h1>
+            <h1 className='display-2 '>{blog.title}</h1>
             <h2 className='text-mted mt-3'>Category: {capitalizeFirstLetter(blog.category)}</h2>
             <h4>{blog.date_created}</h4>
             <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <hr />
             {user &&
-          <button onClick={saveBlog}>Save Blog</button>}
+          <button className="headers bth-lg rounded border-0 p-2" onClick={saveBlog}>Save Blog</button>}
             <br></br>
             <div className="row d-flex justify-content-center">
 
   <div className="col-md-8 col-lg-6">
-    <div className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
+    <div className="card shadow-0 border " style={{backgroundColor: '#f0f2f5'}}>
       <div className="card-body p-4">
         <div className="form-outline mb-4">
         {user && <>
-          <input type="text" id="addANote" className="form-control" placeholder="Type comment..." autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)} onBlur={() => setCommentBody("")} onKeyPress={event => {
+          <input type="text" id="addAComment" className="form-control" placeholder="Type comment..." autoFocus value={commentBody} onChange={e => setCommentBody(e.target.value)} onBlur={() => setCommentBody("")} onKeyPress={event => {
                 if (event.key === 'Enter'){ 
                     handleSubmit()
                 }}
             }
                 />
-          <label className="form-label">+ Add a note</label>
+          <label className="form-label">+ Add a Comment</label>
           </>}
           {!user && <>
         <p>You must be logged in to post a comment.</p> </>}
@@ -136,29 +137,29 @@ const BlogDetail = (props) => {
             <>
             {commentList.map((comment) => {
         return(
-        <div className="row d-flex justify-content-center">
-  <div className="col-md-8 col-lg-6">
-    <div className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
-      <div className="card-body p-4">
+            <div className="row d-flex justify-content-center">
+                <div className="col-md-8 col-lg-6">
+                    <div className="card shadow-0 border" style={{backgroundColor: '#f0f2f5'}}>
+                     <div className="card-body p-4">
 
-        <div className="card mb-4">
-          <div className="card-body">
-            <p>{comment.body}</p>
+                        <div className="card mb-4">
+                            <div className="card-body">
+                                <p>{comment.body}</p>
 
-            <div className="d-flex justify-content-between">
-              <div className="d-flex flex-row align-items-center">
-                <img src={comment.photoURL} alt="avatar" width="25"
-                  height="25" />
-                <p className="small mb-0 ms-2">{comment.username}</p>
-              </div>
+                                <div className="d-flex justify-content-between">
+                                    <div className="d-flex flex-row align-items-center">
+                                        <Avatar src={comment.photoURL} alt="avatar" width="25"
+                                        height="25" />
+                                        <p className="small mb-0 ms-2">{comment.username}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-
-        </div>
-        </div>
-        </div>
-        </div>
         )
     }
 )
@@ -169,7 +170,7 @@ const BlogDetail = (props) => {
             No comments yet.
             </>}
             <br></br>
-            <Link className="m-3 p-3 btn-lg headers fs-5 text-white text-decoration-none" to='/blog'>Back to Blogs</Link>
+            <Link className="m-3 p-3 btn-lg headers fs-5 text-dark text-decoration-none" to='/blog'>Back to Blogs</Link>
            
         </div>
         </div>

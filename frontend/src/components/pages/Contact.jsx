@@ -100,12 +100,12 @@ function Contact() {
             <div class="col-md-3 text-center">
                 <div className="row mb-5 mt-4">
                 <MDBIcon icon="home" className="me-2" /><br></br>
-                    <Link className='link-dark text-decoration-none' to="https://goo.gl/maps/cPZyZUFKcSUai77LA" target="_blank">Dublin City University, Collins Ave Ext, Whitehall, Dublin 9</Link>
+                    <a className='link-dark text-decoration-none' href="https://goo.gl/maps/cPZyZUFKcSUai77LA" target="_blank">Dublin City University, Collins Ave Ext, Whitehall, Dublin 9</a>
                 </div>
 
                 <div className="row">
                 <MDBIcon icon="envelope" className="me-3" />
-                    <Link className='link-dark text-decoration-none' to="mailto:support@renu-ireland.com" target="_blank">support@renu-ireland.com</Link>
+                    <a className='link-dark text-decoration-none' href="mailto:support@renu-ireland.com" target="_blank">support@renu-ireland.com</a>
                 </div>
              </div>
         </div>
