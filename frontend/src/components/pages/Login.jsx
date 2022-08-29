@@ -5,6 +5,8 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "
 import { firebase } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../hocs/Auth';
+import "../baseStyle.css";
+import { Link } from 'react-router-dom';
 
 function Login() {
     const[signedIn, setSignedIn] = useState(false);
@@ -37,37 +39,41 @@ function Login() {
         await signIn(email, password)
       } catch (error) {
         setErrorMessage(error.message)
+        alert(errorMessage)
       }
     }
 
  
     return (
-        <div className="form-signin w-100 m-auto pt-5">
-  <form onSubmit={handleSubmit}>
-    <h1 className="h3 mb-3 fw-normal pt-5">Please sign in</h1>
+      <div className="form-signin w-100 m-auto pt-5">
+        <div className='p-5 rounded-3'>
+            <form onSubmit={handleSubmit}>
+              <h1 className="h4 mb-3 display-7 fw-normal pt-5">Please sign in</h1>
 
-    <div className="form-floating">
-      <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" autoFocus value={email} onChange={e => setEmail(e.target.value)}></input>
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div className="form-floating">
-      <input type="password" className="form-control" id="floatingPassword" placeholder="Password" autoFocus value={password} onChange={e => setPassword(e.target.value)}></input>
-      <label for="floatingPassword">Password</label>
-    </div>
+              <div className="form-floating">
+                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" autoFocus value={email} onChange={e => setEmail(e.target.value)}></input>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div className="form-floating">
+                <input type="password" className="form-control" id="floatingPassword" placeholder="Password" autoFocus value={password} onChange={e => setPassword(e.target.value)}></input>
+                <label for="floatingPassword">Password</label>
+              </div>
 
-    <div className="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"></input>
-      </label>
-    </div>
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    </form>
-    <div className="pt-1">
-    <form onSubmit={handleGoogleSignIn}>
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in with Google</button>
-    </form>
-    </div>
-</div>
+              <button className="w-100 btn-lg headers border-0 " type="submit">Sign in</button>
+            </form>
+              <div className="pt-1">
+                <form onSubmit={handleGoogleSignIn}>
+                  <button className="w-100 btn-lg headers border-0 " type="submit">Sign in with Google</button>
+
+
+                </form>
+              </div>
+              <p className=" mb-3 fw-normal pt-5">Don't have an account?</p>
+              <button className="w-100 btn-lg headers border-0 " type="submit"><Link className='text-dark text-decoration-none' to="/register">Register</Link></button>
+        </div>
+      <br>
+      </br>
+      </div>
 
     )
 }

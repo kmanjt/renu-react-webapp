@@ -26,7 +26,7 @@ import { UserAuth } from '../hocs/Auth';
 import './baseStyle.css'
 
 const pages = ['Blog', 'Community'];
-const settings = ['Profile', 'Account', 'Dashboard'];
+const settings = ['Profile'];
 
 
 

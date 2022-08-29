@@ -46,7 +46,7 @@ class Comment(APIView):
               "body":commentBody
             }
             results = db.child("blog-comments").child(slug).push(data)
-            return Response("Time Added")
+            return Response("Comment added")
         except:
             return Response("Something went wrong.")
 
@@ -61,3 +61,51 @@ class CommentList(APIView):
           return Response(array)
         except:
           return Response([])
+
+class SaveBlog(APIView):
+    def post(self, request, *args, **kwargs):
+        uid = request.data.get('uid')
+        blog_title = request.data.get('blog_title')
+        blog_link = request.data.get('blog_link')
+        blog_excerpt = request.data.get('blog_excerpt')
+        blog_date = request.data.get('blog_date')
+        blog_photo = request.data.get('blog_photo')
+        try:
+            data = {
+              "title":blog_title,
+              "link":blog_link,
+              "excerpt":blog_excerpt,
+              "date":blog_date,
+              "photo":blog_photo
+            }
+            results = db.child("users").child(uid).child(blog_title).set(data)
+            return Response("Blog saved")
+        except:
+            return Response("Something went wrong.")
+    
+class GetSavedBlogs(APIView):
+    def post(self, request, *args, **kwargs):
+      uid = request.data.get('uid')
+      logs = db.child('users').child(uid).get()
+      array = []
+      for log in logs.each():
+            array.append(log.val())
+      return Response(array)
+
+
+
+class UnsaveBlog(APIView):
+    def post(self, request, *args, **kwargs):
+      uid = request.data.get('uid')
+      title = request.data.get('title')
+      if uid and title:
+        db.child('users').child(uid).child(title).remove()
+        logs = db.child('users').child(uid).get()
+        array = []
+        if (logs.each()):
+          for log in logs.each():
+                array.append(log.val())
+        return Response(array)
+        
+      else:
+        return Response(f"Could not unsave {title} for user {uid}")

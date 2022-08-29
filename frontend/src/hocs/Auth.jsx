@@ -23,12 +23,15 @@ export const AuthProvider = ({ children }) => {
     const [authErrorMessage, setAuthErrorMessage] = useState();
 
     const createUser = (email, password, displayName) => {
-      createUserWithEmailAndPassword(firebase, email, password);
-      return updateProfile(user, {displayName: displayName});
+      createUserWithEmailAndPassword(firebase, email, password)
+
+      .catch((err) => {
+        console.log(err.message)
+      });
     };
 
-    const updateDisplayName = (user, displayname) => {
-      return updateProfile(user, {displayName: displayName});
+    const updateDisplayName = (displayName) => {
+      return updateProfile(user, {displayName});
     }
 
     const logout = () => {
