@@ -53,15 +53,15 @@ function Register() {
   <form onSubmit={handleSubmit}>
     <h1 className="h3 mb-3 fw-normal pt-5">Please register</h1>
     <div className="form-floating mb-2">
-      <input type="name" className="form-control" id="floatingUser" placeholder="Username" autoFocus value={name} onChange={e => setName(e.target.value)}></input>
+      <input type="name" className="form-control" id="floatingUser" placeholder="Username" autoFocus value={name} onChange={e => setName(e.target.value)} required></input>
       <label for="floatingInput">Username</label>
     </div>
     <div className="form-floating mb-2">
-      <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" autoFocus value={email} onChange={e => setEmail(e.target.value)}></input>
+      <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" autoFocus value={email} onChange={e => setEmail(e.target.value)} required></input>
       <label for="floatingInput">Email address</label>
     </div>
     <div className="form-floating">
-      <input type="password" className="form-control" id="floatingPassword" placeholder="Password" autoFocus value={password} onChange={e => setPassword(e.target.value)}></input>
+      <input type="password" className="form-control" id="floatingPassword" placeholder="Password" autoFocus value={password} onChange={e => setPassword(e.target.value)} required></input>
       <label for="floatingPassword">Password</label>
     </div>
 
