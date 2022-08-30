@@ -13,7 +13,7 @@ class Categories(models.TextChoices):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=50)
-    author = models.CharField(max_length=50)
+    author = models.CharField(max_length=50, default="Author")
     slug = models.SlugField()
     category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.GARDENING)
     thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
