@@ -56,7 +56,7 @@ function Contact() {
                         <div className='col-md-6 md-form mb-0'>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" name="user_email" placeholder="Your Email" />
+                            <Form.Control type="email" name="user_email" placeholder="Your Email" required/>
                             <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                             </Form.Text>
@@ -66,7 +66,7 @@ function Contact() {
                         <div className='col-md-6'>
                         <Form.Group className="mb-3" >
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="name"  name="user_name" placeholder="Your Name" />
+                            <Form.Control type="name"  name="user_name" placeholder="Your Name" required/>
                         </Form.Group>
                          </div>
                     </div>
@@ -76,7 +76,7 @@ function Contact() {
                     <div className='col-md-12'>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                              <Form.Label>Subject</Form.Label>
-                             <Form.Control type="subject" name="subject" placeholder="Subject" />
+                             <Form.Control type="subject" name="subject" placeholder="Subject" required/>
                         </Form.Group>
                     </div>     
                 </div>
@@ -85,7 +85,7 @@ function Contact() {
                     <div className='col-md-12'>
                         <Form.Label>Message</Form.Label>
                         <InputGroup>
-                    <Form.Control as="textarea" aria-label="With textarea" name="message" placeholder="Please write your message here" style={{ height: "100%"}} />
+                    <Form.Control as="textarea" aria-label="With textarea" name="message" placeholder="Please write your message here" style={{ height: "100%"}} required/>
                 </InputGroup>
                     </div>
                 </div>
