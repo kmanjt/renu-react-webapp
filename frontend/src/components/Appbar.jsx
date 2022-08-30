@@ -62,7 +62,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar style={{ background: "#74948b"}} position="fixed">
+    <AppBar style={{ background: "#74948b", display: 'block', marginBottom: '50px'}} position="absolute">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <IconButton
@@ -142,7 +142,6 @@ const ResponsiveAppBar = () => {
             variant="h5"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -154,7 +153,7 @@ const ResponsiveAppBar = () => {
             }}
             className="text-dark"
           >
-            ReNu
+            <Link className='link-dark text-decoration-none' to="/">ReNu</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

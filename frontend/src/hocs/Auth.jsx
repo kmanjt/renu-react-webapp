@@ -16,6 +16,9 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
+    const google_provider = new GoogleAuthProvider();
+
     const [user, setUser] = useState(null);
     const [displayName, setDisplayName] = useState("");
     const [loading, setLoading] = useState(false);
@@ -47,9 +50,8 @@ export const AuthProvider = ({ children }) => {
       return signInWithEmailAndPassword(firebase, email, password)
     }
 
-    const googleSignIn = () => {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(firebase, provider);
+    const googleSignIn = async () => {
+      await signInWithPopup(firebase, google_provider);
     }
 
     useEffect(() => {
