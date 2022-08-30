@@ -46,7 +46,6 @@ function Profile() {
         axios
         .post(`http://localhost:8000/api/getsavedblogs`, {uid})
         .then(res => {
-            console.log(res.data)
             setSavedBlogs(res.data)
         })
         .catch(err => {
@@ -70,7 +69,6 @@ function Profile() {
     }
 
     useEffect(() => {
-        console.log(user.photoURL);
         setPhotoURL(user.photoURL);
     }, [user])
 

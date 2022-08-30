@@ -56,14 +56,14 @@ function Login() {
               </div>
               <div className="form-floating">
                 <input type="password" className="form-control" id="floatingPassword" placeholder="Password" autoFocus value={password} onChange={e => setPassword(e.target.value)}></input>
-                <label for="floatingPassword">Password</label>
+                <label htmlFor="floatingPassword">Password</label>
               </div>
 
               <button className="w-100 btn-lg headers border-0 " type="submit">Sign in</button>
             </form>
               <div className="pt-1">
                 <form onSubmit={handleGoogleSignIn}>
-                  <button className="w-100 btn-lg headers border-0 " type="submit">Sign in with Google</button>
+                  <button className="w-100 btn-lg headers border-0" type="submit">Sign in with Google</button>
 
 
                 </form>

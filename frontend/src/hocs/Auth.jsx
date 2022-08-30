@@ -24,14 +24,18 @@ export const AuthProvider = ({ children }) => {
 
     const createUser = (email, password, displayName) => {
       createUserWithEmailAndPassword(firebase, email, password)
-
+      .then((userCredential) => {
+        let currentUser = userCredential.user;
+        console.log(`Got user:`, currentUser);
+        updateProfile(currentUser, {displayName});
+      })
       .catch((err) => {
         console.log(err.message)
       });
     };
 
     const updateDisplayName = (displayName) => {
-      return updateProfile(user, {displayName});
+      updateProfile(user, {displayName});
     }
 
     const logout = () => {
@@ -52,8 +56,7 @@ export const AuthProvider = ({ children }) => {
         if (firebase) {
           const unsubscribe = onAuthStateChanged(firebase, (currentUser) => {
             // if user is null, then we force them to login
-            console.log('onAuthStateChanged(): got user', currentUser.email);
-            console.log(currentUser)
+            console.log(`onAuthStateChanged(): got user ${currentUser?.email}`);
             setUser(currentUser);
           });
     

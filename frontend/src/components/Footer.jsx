@@ -11,10 +11,13 @@ export default function Footer() {
 
   return (
     <MDBFooter className='text-center text-lg-start headers text-dark'  style={{
-      //position: "fixed",
-      //left: 0,
-      //bottom: 0,
-      //right: 0,
+      position: "fixed",
+      left: 0,
+      bottom: 0,
+      width: "100%",
+      //padding: 0
+      right: 0,
+      marginTop: "auto"
     }}>
      
 
