@@ -24,8 +24,10 @@ export const AuthProvider = ({ children }) => {
 
     const createUser = (email, password, displayName) => {
       createUserWithEmailAndPassword(firebase, email, password)
-      .then((user) => {
-        updateProfile(user, {displayName});
+      .then((userCredential) => {
+        let currentUser = userCredential.user;
+        console.log(`Got user:`, currentUser);
+        updateProfile(currentUser, {displayName});
       })
       .catch((err) => {
         console.log(err.message)
@@ -33,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateDisplayName = (displayName) => {
-      return updateProfile(user, {displayName});
+      updateProfile(user, {displayName});
     }
 
     const logout = () => {

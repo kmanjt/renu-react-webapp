@@ -22,9 +22,9 @@ function Register() {
       setErrorMessage('');
       try {
         await createUser(email, password, name);
-        await updateDisplayName(user, {'displayName':name})
       } catch (error) {
-        alert(error.message)
+        setErrorMessage(error.message)
+        console.log(errorMessage)
       }
     };
 
@@ -47,21 +47,6 @@ function Register() {
         navigate('/profile')
       }
     }, [user])
-
-    const onSubmit = e => {
-        e.preventDefault()
-        createUserWithEmailAndPassword(firebase, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            user.updateProfile(name)
-            console.log(userCredential.displayName)
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
-        }
-
 
     return (
         <div className="form-signin w-100 m-auto pt-5">
