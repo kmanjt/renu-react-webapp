@@ -62,7 +62,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar style={{ background: "#74948b"}} position="fixed">
+    <AppBar style={{ background: "#74948b"}} position="absolute">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <IconButton
