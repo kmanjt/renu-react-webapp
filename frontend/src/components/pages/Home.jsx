@@ -51,7 +51,7 @@ function Home() {
     </div>
 
     <div className="row align-items-md-stretch">
-      <div className="col-md-6">
+      <div className="col-md-6 mr-3">
         <div className="h-100 p-5 dark-section rounded-3">
           <h2>App coming soon</h2>
           <p>Enjoy our content on the go!</p>
