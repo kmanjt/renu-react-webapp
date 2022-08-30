@@ -56,8 +56,7 @@ export const AuthProvider = ({ children }) => {
         if (firebase) {
           const unsubscribe = onAuthStateChanged(firebase, (currentUser) => {
             // if user is null, then we force them to login
-            console.log('onAuthStateChanged(): got user', currentUser.email);
-            console.log(currentUser)
+            console.log(`onAuthStateChanged(): got user ${currentUser?.email}`);
             setUser(currentUser);
           });
     
