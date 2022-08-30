@@ -8,7 +8,12 @@ const Layout = () => {
   return (
     <>
       <Appbar />
+      <br></br>
+      <br></br>
       <Outlet className="main-theme"/>
+      <br></br>
+      <br></br>
+      <br></br>
       <Footer />
     </>
   );

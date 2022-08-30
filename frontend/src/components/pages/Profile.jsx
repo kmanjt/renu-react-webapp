@@ -4,6 +4,7 @@ import { UserAuth, upload } from '../../hocs/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import axios  from 'axios';
 import { connectStorageEmulator } from 'firebase/storage';
+import Accordion from 'react-bootstrap/Accordion';
 
 function Profile() {
     const { user, logout } = UserAuth();
@@ -89,17 +90,18 @@ function Profile() {
             </div>
             <br>
             </br>
-            <div className='row'>
-                <div className='col-md-4'>
-                    <h3>Change profile picture?</h3>
-                    <br></br>
-                    <input type="file" onChange={handleChange} accept="image/png, image/jpeg" />
+
+            <Accordion className=' text-left w-50'>
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Change profile picture?</Accordion.Header>
+        <Accordion.Body>
+        <input type="file" onChange={handleChange} accept="image/png, image/jpeg" />
+        <br></br>
+        <br></br>
                     <button className="headers bth-lg rounded border-0 p-2" disabled={loading || !photo} onClick={handleClick}>Upload</button>
-                </div>
-                <div className='col-md-2'>
-                   
-                </div>
-            </div>
+        </Accordion.Body>
+      </Accordion.Item>
+         </Accordion>
             <br></br>
             <br></br>
             
