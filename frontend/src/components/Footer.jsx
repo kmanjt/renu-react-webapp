@@ -23,29 +23,29 @@ export default function Footer() {
 
       
 
-      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+      <div className='text-center p-1' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
 
       <Button
         onClick={() => setOpen(!open)}
         aria-controls="example-collapse-text"
         aria-expanded={open}
         variant="outline-dark"
-        className="m-3 headers outline-success border-0"
+        className="m-1 headers outline-success border-0"
       >
         {open &&
         <div>
-          <i className="fas fa-arrow-circle-down fa-3x"></i>
+          <i className="fas fa-arrow-circle-down fa-2x"></i>
   </div>}
         {!open &&
         <>
-        <i className="fas fa-arrow-circle-up fa-3x"></i>
+        <i className="fas fa-arrow-circle-up fa-2x"></i>
         </>}
        
       </Button>
       <Collapse in={open}>
       <section className=''>
         <MDBContainer className='text-center text-md-start '>
-          <MDBRow className=' pt-4'>
+          <MDBRow className=' pt-3'>
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
                 <MDBIcon icon="tree" className="me-3" />

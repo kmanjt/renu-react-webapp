@@ -6,6 +6,7 @@ import styled from '@mui/system/styled';
 import { Link } from 'react-router-dom';
 import '../baseStyle.css';
 import { UserAuth } from '../../hocs/Auth';
+import Homee from '../../assets/Home.png';
 
 const Item = styled('div')(({ theme }) => ({
     
@@ -36,10 +37,14 @@ function Home() {
       <div className="container-fluid py-5">
         <h1 className="display-5 fw-bold">Renu Ireland</h1>
         <div className='row'>
-        <p className="col-md-8 fs-4">Welcome to Renu Ireland! <br></br>
+          <div className='col-md-7'>
+        <p className="fs-4">Welcome to Renu Ireland! <br></br>
          Catering for all your sustainable and environmental needs.</p>
+         <br></br>
+         <Link className="text-dark fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
+         </div>
           <div className='col-md-4'>
-            <Link className="text-dark fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
+            <img src={Homee} class="img-fluid" alt="Home page image" />
           </div>
         </div>
       </div>
@@ -54,6 +59,7 @@ function Home() {
           <button className="btn btn-outline-light m-2" type="button">Apple Store</button>
         </div>
       </div>
+      <br></br>
       <div className="col-md-6">
         <div className="h-100 p-5 light-section border rounded-3 row">
           
