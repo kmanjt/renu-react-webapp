@@ -41,7 +41,7 @@ function Home() {
         <p className="fs-4">Welcome to Renu Ireland! <br></br>
          Catering for all your sustainable and environmental needs.</p>
          <br></br>
-         <Link className="text-dark p-2 fs-5 stretched-link  headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
+         <Link className="text-dark p-2 fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
          </div>
           <div className='col-md-4'>
             <img src={Homee} class="img-fluid" alt="Home page image" />
