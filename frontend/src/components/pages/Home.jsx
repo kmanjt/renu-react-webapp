@@ -41,7 +41,7 @@ function Home() {
         <p className="fs-4">Welcome to Renu Ireland! <br></br>
          Catering for all your sustainable and environmental needs.</p>
          <br></br>
-         <Link className="text-dark fs-5 headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
+         <Link className="text-dark p-2 fs-5 stretched-link  headers dark-green btn-lg text-decoration-none" to="/blog">Check out our blogs</Link>
          </div>
           <div className='col-md-4'>
             <img src={Homee} class="img-fluid" alt="Home page image" />
@@ -59,12 +59,11 @@ function Home() {
           <button className="btn btn-outline-light m-2" type="button">Apple Store</button>
         </div>
       </div>
-      <br></br>
       <div className="col-md-6">
-        <div className="h-100 p-5 light-section border rounded-3 row">
+        <div className="h-100 p-5 light-section border rounded-3">
           
           <h2>Fact of the day</h2>
-          <div className='col-md-8'>
+          <div>
           <p>A fully grown tree can absorb around 21 kilograms of carbon dioxide per year.</p>
           </div>
         </div>

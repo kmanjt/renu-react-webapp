@@ -10,7 +10,7 @@ export default function Footer() {
   const [open, setOpen] = useState(false);
 
   return (
-    <MDBFooter className='text-center text-lg-start headers text-dark'  style={{
+    <MDBFooter className='mt-3 text-center text-lg-start headers text-dark'  style={{
       position: "fixed",
       left: 0,
       bottom: 0,
