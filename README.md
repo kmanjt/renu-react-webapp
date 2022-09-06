@@ -2,7 +2,7 @@
 ## Full Stack React & Django Web Application
 
 * Using React, Django, MySQL DB, Google Firebase DB, Auth.
-* To see our site: [Click here.](www.renu-ireland.com)
+* To see our site: [Click here.](https://www.renu-ireland.com/)
 
 
 
